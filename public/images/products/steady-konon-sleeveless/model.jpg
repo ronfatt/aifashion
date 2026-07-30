@@ -1,49 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#080808" />
-      <stop offset="100%" stop-color="#171717" />
+      <stop offset="100%" stop-color="#181818" />
     </linearGradient>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#studioBg)" />
 
-  <!-- Urban Industrial Street Background Grid -->
+  <!-- Urban Industrial Concrete Grid Backdrop -->
   <line x1="0" y1="200" x2="800" y2="200" stroke="#1c1c1c" stroke-width="1"/>
   <line x1="0" y1="400" x2="800" y2="400" stroke="#1c1c1c" stroke-width="1"/>
   <line x1="0" y1="600" x2="800" y2="600" stroke="#1c1c1c" stroke-width="1"/>
-  <line x1="0" y1="800" x2="800" y2="800" stroke="#1c1c1c" stroke-width="1"/>
 
-  <!-- Stylized Editorial Model Silhouette Wear Preview -->
+  <!-- Model Wear Fit Preview -->
   <g transform="translate(400, 480)">
-    <!-- Head / Mask Silhouette -->
+    <!-- Head / Mask -->
     <circle cx="0" cy="-300" r="45" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
-    <!-- Bucket Cap -->
     <path d="M -55 -315 L 55 -315 L 65 -300 L -65 -300 Z" fill="#080808" stroke="#C8FF00" stroke-width="2"/>
 
-    <!-- Model Body wearing Garment -->
+    <!-- Model Body in Black Heavy Tee -->
     <path d="M -160 -240 L -80 -255 L 80 -255 L 160 -240 L 210 -50 L 150 -30 L 130 -120 L 130 180 L -130 180 L -130 -120 L -150 -30 L -210 -50 Z" fill="#111111" stroke="#333" stroke-width="3"/>
 
-    <!-- Front Print on Model -->
-    <text x="0" y="-120" font-family="Bebas Neue, sans-serif" font-size="36" fill="#F2EFE8" text-anchor="middle" font-weight="900">
+    <!-- Print Preview on Model Shirt -->
+    <text x="0" y="-120" font-family="Bebas Neue, sans-serif" font-size="38" fill="#F2EFE8" text-anchor="middle" font-weight="900">
       STEADY KONON
     </text>
     <text x="0" y="-95" font-family="sans-serif" font-size="10" fill="#C8FF00" text-anchor="middle" font-weight="bold">
       COOL KAT LUAR, PANIC KAT DALAM.
     </text>
 
-    <!-- Cargo Pants & Sneaker Preview -->
+    <!-- Cargo Pants -->
     <path d="M -120 180 L -30 180 L -20 400 L -90 400 Z" fill="#0d0d0d" stroke="#222" stroke-width="2"/>
     <path d="M 30 180 L 120 180 L 90 400 L 20 400 Z" fill="#0d0d0d" stroke="#222" stroke-width="2"/>
   </g>
 
   <!-- Model Info Tag -->
-  <rect x="40" y="40" width="220" height="60" fill="#111111" stroke="#292929" stroke-width="1" rx="2"/>
+  <rect x="40" y="40" width="240" height="60" fill="#111111" stroke="#292929" stroke-width="1" rx="2"/>
   <text x="55" y="62" font-family="sans-serif" font-size="11" font-weight="bold" fill="#C8FF00">STREET LOOKBOOK // KL</text>
   <text x="55" y="80" font-family="sans-serif" font-size="10" fill="#8C8C8C">MODEL IS 182CM WEARING SIZE L</text>
 
   <!-- Editorial Info overlay at bottom -->
-  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">STEADY KONON Sleeveless Tee</text>
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">STEADY KONON Sleeveless Tee</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">ON MODEL EDITORIAL LOOK // KUALA LUMPUR STREETS</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#C8FF00" stroke-width="1"/>
   <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#C8FF00" text-anchor="middle">MODEL</text>

@@ -1,59 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#080808" />
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="50%" stop-color="#0a0a0a" />
       <stop offset="100%" stop-color="#141414" />
     </linearGradient>
+    <pattern id="heavyCottonFabric" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#111111"/>
+      <path d="M 0 3 L 6 3 M 3 0 L 3 6" stroke="#181818" stroke-width="0.8"/>
+    </pattern>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#studioBg)" />
+
+  <!-- Garment Shadow -->
+  <ellipse cx="400" cy="810" rx="240" ry="25" fill="#000000" opacity="0.8" />
 
   <!-- Garment Back Silhouette -->
-  <g transform="translate(0, 50)">
-    <path d="M 220 210 L 330 140 L 470 140 L 580 210 L 640 370 L 550 410 L 520 340 L 520 780 L 280 780 L 280 340 L 250 410 L 160 370 Z" fill="#111111" stroke="#292929" stroke-width="3"/>
-           <line x1="280" y1="180" x2="280" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
-           <line x1="520" y1="180" x2="520" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
+  <g transform="translate(0, 40)">
+    <path d="M 210 200 L 330 130 L 470 130 L 590 200 L 650 360 L 555 400 L 520 330 L 520 760 L 280 760 L 280 330 L 245 400 L 150 360 Z" fill="url(#heavyCottonFabric)" stroke="#222222" stroke-width="3"/>
+           <line x1="280" y1="170" x2="280" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>
+           <line x1="520" y1="170" x2="520" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>
 
-    <!-- High Collar Rib Back -->
-    <path d="M 340 140 L 460 140" stroke="#222222" stroke-width="14"/>
+    <!-- Collar Rib Back -->
+    <path d="M 330 130 L 470 130" stroke="#1c1c1c" stroke-width="14"/>
 
-    <!-- Large Editorial Back Graphic Print -->
-    <g transform="translate(400, 360)">
-      <!-- Giant Back Slang Typography -->
-      <text x="0" y="-80" font-family="Bebas Neue, sans-serif" font-size="64" font-weight="900" fill="#B7945A" text-anchor="middle" letter-spacing="4">
+    <!-- GIANT BACK EDITORIAL SLANG GRAPHIC PRINT -->
+    <g transform="translate(400, 350)">
+      <!-- Oversized Back Headline -->
+      <text x="0" y="-70" font-family="Bebas Neue, sans-serif" font-size="68" font-weight="900" fill="#B7945A" text-anchor="middle" letter-spacing="4">
         SEMBANG KENCANG
       </text>
 
-      <!-- Back Malay Copy -->
-      <rect x="-180" y="-20" width="360" height="60" fill="#080808" stroke="#333" stroke-width="1.5" rx="2"/>
-      <text x="0" y="16" font-family="sans-serif" font-size="18" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
+      <!-- Back Malay Slang Quotation Box -->
+      <rect x="-190" y="-15" width="380" height="65" fill="#080808" stroke="#333333" stroke-width="1.5" rx="3"/>
+      <text x="0" y="22" font-family="sans-serif" font-size="20" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
         "Banyak cakap. Sedikit gerak."
       </text>
 
-      <!-- Batik Graphic Box Accent -->
-      <g opacity="0.6">
-        <path d="M -160 70 L 160 70" stroke="#B7945A" stroke-width="2" stroke-dasharray="6 4"/>
-        <text x="0" y="100" font-family="sans-serif" font-size="11" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
-          MALAYSIAN STREET SATIRE • ORIGINAL ARTWORK
-        </text>
-        <!-- Fake Barcode -->
-        <rect x="-60" y="120" width="120" height="30" fill="#080808" stroke="#333" stroke-width="1"/>
-        <line x1="-50" y1="125" x2="-50" y2="145" stroke="#FFF" stroke-width="2"/>
-        <line x1="-44" y1="125" x2="-44" y2="145" stroke="#FFF" stroke-width="4"/>
-        <line x1="-34" y1="125" x2="-34" y2="145" stroke="#FFF" stroke-width="1"/>
-        <line x1="-25" y1="125" x2="-25" y2="145" stroke="#FFF" stroke-width="3"/>
-        <line x1="-15" y1="125" x2="-15" y2="145" stroke="#FFF" stroke-width="5"/>
-        <line x1="-2" y1="125" x2="-2" y2="145" stroke="#FFF" stroke-width="2"/>
-        <line x1="8" y1="125" x2="8" y2="145" stroke="#FFF" stroke-width="4"/>
-        <line x1="20" y1="125" x2="20" y2="145" stroke="#FFF" stroke-width="2"/>
-        <line x1="30" y1="125" x2="30" y2="145" stroke="#FFF" stroke-width="3"/>
-        <line x1="45" y1="125" x2="45" y2="145" stroke="#FFF" stroke-width="2"/>
-      </g>
+      <!-- Subtitle metadata line -->
+      <text x="0" y="80" font-family="sans-serif" font-size="10" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
+        MALAYSIAN STREET SATIRE • ORIGINAL ARTWORK
+      </text>
+
+      <!-- Fake Barcode & Spec Code -->
+      <rect x="-60" y="105" width="120" height="28" fill="#080808" stroke="#292929" stroke-width="1"/>
+      <line x1="-50" y1="110" x2="-50" y2="128" stroke="#FFF" stroke-width="2"/>
+      <line x1="-44" y1="110" x2="-44" y2="128" stroke="#FFF" stroke-width="4"/>
+      <line x1="-34" y1="110" x2="-34" y2="128" stroke="#FFF" stroke-width="1"/>
+      <line x1="-25" y1="110" x2="-25" y2="128" stroke="#FFF" stroke-width="3"/>
+      <line x1="-15" y1="110" x2="-15" y2="128" stroke="#FFF" stroke-width="5"/>
+      <line x1="-2" y1="110" x2="-2" y2="128" stroke="#FFF" stroke-width="2"/>
+      <line x1="8" y1="110" x2="8" y2="128" stroke="#FFF" stroke-width="4"/>
+      <line x1="20" y1="110" x2="20" y2="128" stroke="#FFF" stroke-width="2"/>
+      <line x1="30" y1="110" x2="30" y2="128" stroke="#FFF" stroke-width="3"/>
+      <line x1="45" y1="110" x2="45" y2="128" stroke="#FFF" stroke-width="2"/>
     </g>
   </g>
 
   <!-- Editorial Info overlay at bottom -->
-  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">SEMBANG KENCANG Oversized Tee</text>
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">SEMBANG KENCANG Oversized Tee</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "Banyak cakap. Sedikit gerak."</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#B7945A" stroke-width="1"/>
   <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#B7945A" text-anchor="middle">BACK</text>

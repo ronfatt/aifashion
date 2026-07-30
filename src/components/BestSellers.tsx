@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Flame, Sparkles } from "lucide-react";
 import { PRODUCTS } from "@/data/products";
 import { ProductCard } from "./ProductCard";
 
@@ -13,17 +13,22 @@ export const BestSellers: React.FC = () => {
   );
 
   return (
-    <section id="best-sellers" className="w-full py-20 bg-[#080808] border-b border-[#292929]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="best-sellers" className="w-full py-20 bg-[#080808] border-b border-[#292929] relative overflow-hidden">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#C8FF00]/5 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div>
             <div className="flex items-center space-x-3 mb-2">
-              <span className="text-xs font-mono tracking-widest text-[#C8FF00] uppercase">
-                // POPULAR STREET WEAR
+              <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#171717] border border-[#292929] text-[11px] font-mono text-[#C8FF00] font-bold rounded-sm uppercase tracking-wider">
+                <Flame className="w-3.5 h-3.5 fill-current text-[#C8FF00]" />
+                <span>TOP STREETWEAR DROPS</span>
               </span>
+
               {/* Handwritten style badge */}
-              <span className="font-[font-family:var(--font-playfair)] italic text-sm text-[#C8FF00] bg-[#171717] px-2.5 py-0.5 border border-[#292929] rounded-full">
+              <span className="font-[font-family:var(--font-playfair)] italic text-sm text-[#C8FF00] bg-[#111111] px-3 py-0.5 border border-[#C8FF00]/30 rounded-full shadow-[0_0_15px_rgba(200,255,0,0.15)]">
                 Paling On ✨
               </span>
             </div>
