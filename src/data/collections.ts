@@ -15,7 +15,7 @@ export const COLLECTIONS: Collection[] = [
     title: "LOCAL IRONY",
     subtitle: "Banyak cakap. Sedikit gerak.",
     description: "Satirical Malaysian street statements printed on 260 GSM drop-shoulder silhouettes.",
-    image: "/images/products/sembang-kencang-tee/model.jpg",
+    image: "/images/products/sembang-kencang-tee/model.png",
     tags: ["SEMBANG KENCANG", "ACAH PADU", "BOLEH LAH"],
   },
   {
@@ -24,7 +24,7 @@ export const COLLECTIONS: Collection[] = [
     title: "STREET SATIRE",
     subtitle: "Warisan lama. Attitude baru.",
     description: "Reimagined Malaysian slang fused with rebellious dark streetwear aesthetics and batik motifs.",
-    image: "/images/products/padu-gila-tee/model.jpg",
+    image: "/images/products/padu-gila-tee/model.png",
     tags: ["PADU GILA", "SENTAP SIKIT", "SYOK LAH"],
   },
   {
@@ -33,7 +33,7 @@ export const COLLECTIONS: Collection[] = [
     title: "LEPAK CLUB",
     subtitle: "No agenda. Just vibes.",
     description: "Ultra-heavyweight relaxed fits engineered for midnight kopitiam sessions and urban wandering.",
-    image: "/images/products/jom-lepak-tee/model.jpg",
+    image: "/images/products/jom-lepak-tee/model.png",
     tags: ["JOM LEPAK", "TERPALING ON", "CHILL DULU"],
   },
 ];

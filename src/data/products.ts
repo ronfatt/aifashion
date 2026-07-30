@@ -50,10 +50,10 @@ export const PRODUCTS: Product[] = [
     price: 129,
     compareAtPrice: 149,
     images: {
-      front: "/images/products/sembang-kencang-tee/front.jpg",
-      back: "/images/products/sembang-kencang-tee/back.jpg",
-      detail: "/images/products/sembang-kencang-tee/detail.jpg",
-      model: "/images/products/sembang-kencang-tee/model.jpg",
+      front: "/images/products/sembang-kencang-tee/front.png",
+      back: "/images/products/sembang-kencang-tee/back.png",
+      detail: "/images/products/sembang-kencang-tee/detail.png",
+      model: "/images/products/sembang-kencang-tee/model.png",
     },
     colors: [
       { name: "Obsidian Black", hex: "#080808", value: "black" },
@@ -88,10 +88,10 @@ export const PRODUCTS: Product[] = [
     price: 109,
     compareAtPrice: 129,
     images: {
-      front: "/images/products/acah-padu-sleeveless/front.jpg",
-      back: "/images/products/acah-padu-sleeveless/back.jpg",
-      detail: "/images/products/acah-padu-sleeveless/detail.jpg",
-      model: "/images/products/acah-padu-sleeveless/model.jpg",
+      front: "/images/products/acah-padu-sleeveless/front.png",
+      back: "/images/products/acah-padu-sleeveless/back.png",
+      detail: "/images/products/acah-padu-sleeveless/detail.png",
+      model: "/images/products/acah-padu-sleeveless/model.png",
     },
     colors: [
       { name: "Surface Black", hex: "#111111", value: "black" },
@@ -124,10 +124,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "lepak-club",
     price: 129,
     images: {
-      front: "/images/products/terpaling-on-tee/front.jpg",
-      back: "/images/products/terpaling-on-tee/back.jpg",
-      detail: "/images/products/terpaling-on-tee/detail.jpg",
-      model: "/images/products/terpaling-on-tee/model.jpg",
+      front: "/images/products/terpaling-on-tee/front.png",
+      back: "/images/products/terpaling-on-tee/back.png",
+      detail: "/images/products/terpaling-on-tee/detail.png",
+      model: "/images/products/terpaling-on-tee/model.png",
     },
     colors: [
       { name: "Pitch Black", hex: "#080808", value: "black" },
@@ -160,10 +160,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "local-irony",
     price: 109,
     images: {
-      front: "/images/products/boleh-lah-sleeveless/front.jpg",
-      back: "/images/products/boleh-lah-sleeveless/back.jpg",
-      detail: "/images/products/boleh-lah-sleeveless/detail.jpg",
-      model: "/images/products/boleh-lah-sleeveless/model.jpg",
+      front: "/images/products/boleh-lah-sleeveless/front.png",
+      back: "/images/products/boleh-lah-sleeveless/back.png",
+      detail: "/images/products/boleh-lah-sleeveless/detail.png",
+      model: "/images/products/boleh-lah-sleeveless/model.png",
     },
     colors: [
       { name: "Washed Black", hex: "#171717", value: "black" },
@@ -197,10 +197,10 @@ export const PRODUCTS: Product[] = [
     price: 129,
     compareAtPrice: 159,
     images: {
-      front: "/images/products/padu-gila-tee/front.jpg",
-      back: "/images/products/padu-gila-tee/back.jpg",
-      detail: "/images/products/padu-gila-tee/detail.jpg",
-      model: "/images/products/padu-gila-tee/model.jpg",
+      front: "/images/products/padu-gila-tee/front.png",
+      back: "/images/products/padu-gila-tee/back.png",
+      detail: "/images/products/padu-gila-tee/detail.png",
+      model: "/images/products/padu-gila-tee/model.png",
     },
     colors: [
       { name: "Deep Black", hex: "#080808", value: "black" },
@@ -233,10 +233,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "lepak-club",
     price: 129,
     images: {
-      front: "/images/products/jom-lepak-tee/front.jpg",
-      back: "/images/products/jom-lepak-tee/back.jpg",
-      detail: "/images/products/jom-lepak-tee/detail.jpg",
-      model: "/images/products/jom-lepak-tee/model.jpg",
+      front: "/images/products/jom-lepak-tee/front.png",
+      back: "/images/products/jom-lepak-tee/back.png",
+      detail: "/images/products/jom-lepak-tee/detail.png",
+      model: "/images/products/jom-lepak-tee/model.png",
     },
     colors: [
       { name: "Background Black", hex: "#080808", value: "black" },
@@ -260,7 +260,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "prod-07",
-    slug: "ngam-lah-longline-tee",
+    slug: "ngam-lah-tee",
     name: "NGAM LAH Oversized Tee",
     subtitle: "Local Vibes Only.",
     series: "NGAM LAH",
@@ -268,10 +268,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "lokal-essentials",
     price: 129,
     images: {
-      front: "/images/products/ngam-lah-longline-tee/front.jpg",
-      back: "/images/products/ngam-lah-longline-tee/back.jpg",
-      detail: "/images/products/ngam-lah-longline-tee/detail.jpg",
-      model: "/images/products/ngam-lah-longline-tee/model.jpg",
+      front: "/images/products/ngam-lah-tee/front.png",
+      back: "/images/products/ngam-lah-tee/back.png",
+      detail: "/images/products/ngam-lah-tee/detail.png",
+      model: "/images/products/ngam-lah-tee/model.png",
     },
     colors: [
       { name: "Obsidian Black", hex: "#080808", value: "black" },
@@ -303,10 +303,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "street-satire",
     price: 129,
     images: {
-      front: "/images/products/syok-lah-tee/front.jpg",
-      back: "/images/products/syok-lah-tee/back.jpg",
-      detail: "/images/products/syok-lah-tee/detail.jpg",
-      model: "/images/products/syok-lah-tee/model.jpg",
+      front: "/images/products/syok-lah-tee/front.png",
+      back: "/images/products/syok-lah-tee/back.png",
+      detail: "/images/products/syok-lah-tee/detail.png",
+      model: "/images/products/syok-lah-tee/model.png",
     },
     colors: [
       { name: "Surface Black", hex: "#111111", value: "black" },
@@ -338,10 +338,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "street-satire",
     price: 129,
     images: {
-      front: "/images/products/sentap-sikit-tee/front.jpg",
-      back: "/images/products/sentap-sikit-tee/back.jpg",
-      detail: "/images/products/sentap-sikit-tee/detail.jpg",
-      model: "/images/products/sentap-sikit-tee/model.jpg",
+      front: "/images/products/sentap-sikit-tee/front.png",
+      back: "/images/products/sentap-sikit-tee/back.png",
+      detail: "/images/products/sentap-sikit-tee/detail.png",
+      model: "/images/products/sentap-sikit-tee/model.png",
     },
     colors: [
       { name: "Washed Black", hex: "#171717", value: "black" },
@@ -373,10 +373,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "local-irony",
     price: 109,
     images: {
-      front: "/images/products/steady-konon-sleeveless/front.jpg",
-      back: "/images/products/steady-konon-sleeveless/back.jpg",
-      detail: "/images/products/steady-konon-sleeveless/detail.jpg",
-      model: "/images/products/steady-konon-sleeveless/model.jpg",
+      front: "/images/products/steady-konon-sleeveless/front.png",
+      back: "/images/products/steady-konon-sleeveless/back.png",
+      detail: "/images/products/steady-konon-sleeveless/detail.png",
+      model: "/images/products/steady-konon-sleeveless/model.png",
     },
     colors: [
       { name: "Deep Black", hex: "#080808", value: "black" },
@@ -408,10 +408,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "local-irony",
     price: 129,
     images: {
-      front: "/images/products/banyak-alasan-tee/front.jpg",
-      back: "/images/products/banyak-alasan-tee/back.jpg",
-      detail: "/images/products/banyak-alasan-tee/detail.jpg",
-      model: "/images/products/banyak-alasan-tee/model.jpg",
+      front: "/images/products/banyak-alasan-tee/front.png",
+      back: "/images/products/banyak-alasan-tee/back.png",
+      detail: "/images/products/banyak-alasan-tee/detail.png",
+      model: "/images/products/banyak-alasan-tee/model.png",
     },
     colors: [
       { name: "Obsidian Black", hex: "#080808", value: "black" },
@@ -443,10 +443,10 @@ export const PRODUCTS: Product[] = [
     collectionId: "lepak-club",
     price: 129,
     images: {
-      front: "/images/products/chill-dulu-tee/front.jpg",
-      back: "/images/products/chill-dulu-tee/back.jpg",
-      detail: "/images/products/chill-dulu-tee/detail.jpg",
-      model: "/images/products/chill-dulu-tee/model.jpg",
+      front: "/images/products/chill-dulu-tee/front.png",
+      back: "/images/products/chill-dulu-tee/back.png",
+      detail: "/images/products/chill-dulu-tee/detail.png",
+      model: "/images/products/chill-dulu-tee/model.png",
     },
     colors: [
       { name: "Background Black", hex: "#080808", value: "black" },
