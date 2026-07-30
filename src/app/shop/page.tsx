@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState, useMemo, Suspense } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Filter, SlidersHorizontal, ArrowUpDown } from "lucide-react";
-import { PRODUCTS, Product } from "@/data/products";
+import { SlidersHorizontal } from "lucide-react";
+import { PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
-import { COLLECTIONS } from "@/data/collections";
 import { ProductCard } from "@/components/ProductCard";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -49,13 +47,13 @@ function ShopContent() {
         {/* Header */}
         <div className="mb-10 text-center sm:text-left">
           <span className="text-xs font-mono tracking-widest text-[#C8FF00] uppercase block mb-1">
-            // OFFICIAL STORE CATALOG
+            // OFFICIAL STREETWEAR CATALOG
           </span>
           <h1 className="font-display text-5xl sm:text-7xl text-[#F2EFE8] uppercase tracking-wider">
-            ALL STREETWEAR
+            ALL OVERSIZED UNIFORMS
           </h1>
           <p className="font-mono text-xs sm:text-sm text-[#8C8C8C] mt-2">
-            Showing {filteredProducts.length} street garments crafted in Malaysia.
+            Showing {filteredProducts.length} street satire garments (240–260 GSM Heavyweight Cotton).
           </p>
         </div>
 
@@ -65,7 +63,7 @@ function ShopContent() {
           <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar pb-2 md:pb-0">
             <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3 py-1.5 font-mono text-xs font-bold rounded-sm border whitespace-nowrap transition-colors ${
+              className={`min-h-[44px] px-4 py-2 font-mono text-xs font-bold rounded-sm border whitespace-nowrap transition-colors ${
                 selectedCategory === "all"
                   ? "bg-[#C8FF00] text-[#080808] border-[#C8FF00]"
                   : "bg-[#080808] text-[#8C8C8C] border-[#292929] hover:text-[#F2EFE8]"
@@ -78,7 +76,7 @@ function ShopContent() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 font-mono text-xs font-bold rounded-sm border whitespace-nowrap transition-colors ${
+                className={`min-h-[44px] px-4 py-2 font-mono text-xs font-bold rounded-sm border whitespace-nowrap transition-colors ${
                   selectedCategory === cat.id
                     ? "bg-[#C8FF00] text-[#080808] border-[#C8FF00]"
                     : "bg-[#080808] text-[#8C8C8C] border-[#292929] hover:text-[#F2EFE8]"
@@ -96,7 +94,7 @@ function ShopContent() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="bg-[#080808] border border-[#292929] text-[#F2EFE8] px-3 py-1.5 rounded-sm focus:outline-none focus:border-[#C8FF00]"
+              className="bg-[#080808] border border-[#292929] text-[#F2EFE8] px-3 py-2 rounded-sm focus:outline-none focus:border-[#C8FF00] min-h-[44px]"
             >
               <option value="featured">FEATURED</option>
               <option value="price-low">PRICE: LOW TO HIGH</option>

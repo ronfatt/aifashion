@@ -17,7 +17,7 @@ export const SearchModal: React.FC = () => {
     }
   }, [isSearchOpen]);
 
-  // Filter products matching query
+  // Filter products matching query across name, series, subtitle, category, front copy, back copy
   const filteredProducts = searchQuery.trim()
     ? PRODUCTS.filter((p) => {
         const q = searchQuery.toLowerCase();
@@ -26,19 +26,23 @@ export const SearchModal: React.FC = () => {
           p.series.toLowerCase().includes(q) ||
           p.subtitle.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q)
+          p.description.toLowerCase().includes(q) ||
+          p.frontMain.toLowerCase().includes(q) ||
+          p.backCopy.toLowerCase().includes(q)
         );
       })
     : [];
 
   const POPULAR_SEARCHES = [
-    "SEMBANG KENCANG",
-    "ACAH PADU",
-    "TERPALING ON",
-    "BOLEH LAH",
-    "PADU GILA",
-    "HOODIE",
-    "BATIK",
+    "SEMBANG",
+    "PADU",
+    "LEPAK",
+    "NGAM",
+    "SYOK",
+    "SENTAP",
+    "KONON",
+    "CHILL",
+    "ALASAN",
   ];
 
   return (
@@ -76,7 +80,7 @@ export const SearchModal: React.FC = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by slang, product name, series (e.g. Sembang Kencang, Padu)..."
+                placeholder="Search slang (e.g. Sembang, Padu, Lepak, Sentap, Chill)..."
                 className="w-full bg-[#111111] border-2 border-[#292929] focus:border-[#C8FF00] text-xl sm:text-2xl font-mono text-[#F2EFE8] placeholder-[#8C8C8C] pl-14 pr-12 py-5 rounded-sm focus:outline-none transition-colors"
                 aria-label="Search input"
               />
@@ -95,7 +99,7 @@ export const SearchModal: React.FC = () => {
             {!searchQuery && (
               <div className="space-y-4 my-8">
                 <span className="text-xs font-mono text-[#8C8C8C] tracking-widest uppercase block">
-                  POPULAR STREET SEARCHES:
+                  POPULAR STREET SLANG SEARCHES:
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {POPULAR_SEARCHES.map((term) => (
@@ -123,7 +127,7 @@ export const SearchModal: React.FC = () => {
                   <div className="py-16 text-center space-y-4">
                     <p className="font-display text-3xl text-[#F2EFE8]">TAK ADA RESULTS LAH</p>
                     <p className="text-xs font-mono text-[#8C8C8C]">
-                      No streetwear items matched your query. Try searching for "Tee", "Hoodie", or "Batik".
+                      No streetwear items matched your query. Try searching for "Sembang", "Padu", "Lepak", or "Chill".
                     </p>
                   </div>
                 ) : (
@@ -146,12 +150,15 @@ export const SearchModal: React.FC = () => {
 
                         <div className="flex-grow flex flex-col justify-between">
                           <div>
-                            <span className="text-[9px] font-mono text-[#C8FF00] uppercase block">
+                            <span className="text-[9px] font-mono text-[#C8FF00] uppercase block font-bold">
                               {product.series}
                             </span>
                             <h4 className="font-display text-lg text-[#F2EFE8] group-hover:text-[#C8FF00] transition-colors leading-tight line-clamp-1">
                               {product.name}
                             </h4>
+                            <p className="text-[10px] font-mono text-[#8C8C8C] line-clamp-1">
+                              "{product.backCopy}"
+                            </p>
                           </div>
 
                           <div className="flex items-center justify-between pt-2 border-t border-[#292929]">

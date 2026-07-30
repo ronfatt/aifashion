@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+
+  <!-- Garment Back Silhouette -->
+  <g transform="translate(0, 50)">
+    <path d="M 220 210 L 330 140 L 470 140 L 580 210 L 640 370 L 550 410 L 520 340 L 520 780 L 280 780 L 280 340 L 250 410 L 160 370 Z" fill="#111111" stroke="#292929" stroke-width="3"/>
+           <line x1="280" y1="180" x2="280" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
+           <line x1="520" y1="180" x2="520" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
+
+    <!-- High Collar Rib Back -->
+    <path d="M 340 140 L 460 140" stroke="#222222" stroke-width="14"/>
+
+    <!-- Large Editorial Back Graphic Print -->
+    <g transform="translate(400, 360)">
+      <!-- Giant Back Slang Typography -->
+      <text x="0" y="-80" font-family="Bebas Neue, sans-serif" font-size="64" font-weight="900" fill="#C8FF00" text-anchor="middle" letter-spacing="4">
+        PADU GILA
+      </text>
+
+      <!-- Back Malay Copy -->
+      <rect x="-180" y="-20" width="360" height="60" fill="#080808" stroke="#333" stroke-width="1.5" rx="2"/>
+      <text x="0" y="16" font-family="sans-serif" font-size="18" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
+        "Local heat. Global attitude."
+      </text>
+
+      <!-- Batik Graphic Box Accent -->
+      <g opacity="0.6">
+        <path d="M -160 70 L 160 70" stroke="#C8FF00" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="0" y="100" font-family="sans-serif" font-size="11" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
+          MALAYSIAN STREET SATIRE • ORIGINAL ARTWORK
+        </text>
+        <!-- Fake Barcode -->
+        <rect x="-60" y="120" width="120" height="30" fill="#080808" stroke="#333" stroke-width="1"/>
+        <line x1="-50" y1="125" x2="-50" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="-44" y1="125" x2="-44" y2="145" stroke="#FFF" stroke-width="4"/>
+        <line x1="-34" y1="125" x2="-34" y2="145" stroke="#FFF" stroke-width="1"/>
+        <line x1="-25" y1="125" x2="-25" y2="145" stroke="#FFF" stroke-width="3"/>
+        <line x1="-15" y1="125" x2="-15" y2="145" stroke="#FFF" stroke-width="5"/>
+        <line x1="-2" y1="125" x2="-2" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="8" y1="125" x2="8" y2="145" stroke="#FFF" stroke-width="4"/>
+        <line x1="20" y1="125" x2="20" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="30" y1="125" x2="30" y2="145" stroke="#FFF" stroke-width="3"/>
+        <line x1="45" y1="125" x2="45" y2="145" stroke="#FFF" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Editorial Info overlay at bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">PADU GILA Oversized Tee</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "Local heat. Global attitude."</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#C8FF00" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#C8FF00" text-anchor="middle">BACK</text>
+</svg>

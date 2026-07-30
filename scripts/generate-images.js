@@ -1,180 +1,432 @@
 const fs = require('fs');
 const path = require('path');
 
-const dirs = [
-  'public/images/hero',
-  'public/images/products',
-  'public/images/collections',
-  'public/images/lookbook',
-  'public/images/social',
-  'public/images/details',
+const PRODUCTS_DATA = [
+  {
+    slug: 'sembang-kencang-tee',
+    name: 'SEMBANG KENCANG Oversized Tee',
+    subtitle: 'Talk Big. Move Slow.',
+    frontMain: 'SEMBANG KENCANG',
+    frontSub: 'Talk Big. Move Slow.',
+    backCopy: 'Banyak cakap. Sedikit gerak.',
+    type: 'tee',
+    colorName: 'Obsidian Black / Batik Gold',
+    accentColor: '#B7945A',
+    badge: 'BEST SELLER',
+  },
+  {
+    slug: 'acah-padu-sleeveless',
+    name: 'ACAH PADU Sleeveless Tee',
+    subtitle: 'Style Banyak, Kerja Kurang.',
+    frontMain: 'ACAH PADU',
+    frontSub: 'Style Banyak, Kerja Kurang.',
+    backCopy: 'Nampak macam power. Itu je.',
+    type: 'sleeveless',
+    colorName: 'Surface Black / Burnt Orange',
+    accentColor: '#D65A20',
+    badge: 'HOT',
+  },
+  {
+    slug: 'terpaling-on-tee',
+    name: 'TERPALING ON Oversized Tee',
+    subtitle: 'Reply Laju, Datang Lambat.',
+    frontMain: 'TERPALING ON',
+    frontSub: 'Reply Laju, Datang Lambat.',
+    backCopy: 'Online sentiasa. Action entah bila.',
+    type: 'tee',
+    colorName: 'Pitch Black / Acid Lime',
+    accentColor: '#C8FF00',
+    badge: 'NEW DROP',
+  },
+  {
+    slug: 'boleh-lah-sleeveless',
+    name: 'BOLEH LAH Sleeveless Tee',
+    subtitle: 'Not Great. Still Jalan.',
+    frontMain: 'BOLEH LAH',
+    frontSub: 'Not Great. Still Jalan.',
+    backCopy: 'Tak perfect. Tapi lepas.',
+    type: 'sleeveless',
+    colorName: 'Washed Black / Heritage Red',
+    accentColor: '#8D2025',
+    badge: 'LIMITED RUN',
+  },
+  {
+    slug: 'padu-gila-tee',
+    name: 'PADU GILA Oversized Tee',
+    subtitle: 'Too Loud To Ignore.',
+    frontMain: 'PADU GILA',
+    frontSub: 'Too Loud To Ignore.',
+    backCopy: 'Local heat. Global attitude.',
+    type: 'tee',
+    colorName: 'Deep Black / Acid Lime',
+    accentColor: '#C8FF00',
+    badge: 'BEST SELLER',
+  },
+  {
+    slug: 'jom-lepak-tee',
+    name: 'JOM LEPAK Oversized Tee',
+    subtitle: 'No Rush. No Drama.',
+    frontMain: 'JOM LEPAK',
+    frontSub: 'No Rush. No Drama.',
+    backCopy: 'Kopi dulu. Cerita kemudian.',
+    type: 'tee',
+    colorName: 'Background Black / Off White',
+    accentColor: '#F2EFE8',
+    badge: 'NEW DROP',
+  },
+  {
+    slug: 'ngam-lah-longline-tee',
+    name: 'NGAM LAH Oversized Tee',
+    subtitle: 'Local Vibes Only.',
+    frontMain: 'NGAM LAH',
+    frontSub: 'Local Vibes Only.',
+    backCopy: 'Masuk kepala. Masuk gaya.',
+    type: 'tee',
+    colorName: 'Obsidian Black / Dark Teal',
+    accentColor: '#0E5B5F',
+    badge: 'LIMITED RUN',
+  },
+  {
+    slug: 'syok-lah-tee',
+    name: 'SYOK LAH Oversized Tee',
+    subtitle: 'Too Good To Miss.',
+    frontMain: 'SYOK LAH',
+    frontSub: 'Too Good To Miss.',
+    backCopy: 'Sekali pakai terus jadi.',
+    type: 'tee',
+    colorName: 'Surface Black / Cream',
+    accentColor: '#E8DFCF',
+    badge: 'NEW DROP',
+  },
+  {
+    slug: 'sentap-sikit-tee',
+    name: 'SENTAP SIKIT Oversized Tee',
+    subtitle: 'Truth Hurts A Bit.',
+    frontMain: 'SENTAP SIKIT',
+    frontSub: 'Truth Hurts A Bit.',
+    backCopy: 'Kalau terasa, mungkin betul.',
+    type: 'tee',
+    colorName: 'Washed Black / Heritage Red',
+    accentColor: '#8D2025',
+    badge: 'HOT',
+  },
+  {
+    slug: 'steady-konon-sleeveless',
+    name: 'STEADY KONON Sleeveless Tee',
+    subtitle: 'Cool Kat Luar, Panic Kat Dalam.',
+    frontMain: 'STEADY KONON',
+    frontSub: 'Cool Kat Luar, Panic Kat Dalam.',
+    backCopy: 'Muka relax. Jiwa kalut.',
+    type: 'sleeveless',
+    colorName: 'Deep Black / Acid Lime',
+    accentColor: '#C8FF00',
+    badge: 'LIMITED RUN',
+  },
+  {
+    slug: 'banyak-alasan-tee',
+    name: 'BANYAK ALASAN Oversized Tee',
+    subtitle: 'Excuses Premium Edition.',
+    frontMain: 'BANYAK ALASAN',
+    frontSub: 'Excuses Premium Edition.',
+    backCopy: 'Idea ada. Gerak tak ada.',
+    type: 'tee',
+    colorName: 'Obsidian Black / Burnt Orange',
+    accentColor: '#D65A20',
+    badge: 'NEW DROP',
+  },
+  {
+    slug: 'chill-dulu-tee',
+    name: 'CHILL DULU Oversized Tee',
+    subtitle: 'Everything Also Urgent?',
+    frontMain: 'CHILL DULU',
+    frontSub: 'Everything Also Urgent?',
+    backCopy: 'Relax bro. Dunia belum habis.',
+    type: 'tee',
+    colorName: 'Background Black / Off White',
+    accentColor: '#F2EFE8',
+    badge: 'BEST SELLER',
+  },
 ];
 
-dirs.forEach((dir) => {
-  const fullPath = path.join(__dirname, '..', dir);
-  if (!fs.existsSync(fullPath)) {
-    fs.mkdirSync(fullPath, { recursive: true });
-  }
-});
+// Helper to generate SVG mockup for Front View
+function generateFrontSVG(prod) {
+  const isSleeveless = prod.type === 'sleeveless';
+  const accent = prod.accentColor;
 
-function createStreetwearSVG(title, subtitle, tag, width = 800, height = 1000, bgGradient = ['#080808', '#171717'], accent = '#C8FF00') {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="${bgGradient[0]}" />
-      <stop offset="100%" stop-color="${bgGradient[1]}" />
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#141414" />
     </linearGradient>
-    <linearGradient id="overlay" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#080808" stop-opacity="0.9" />
-      <stop offset="60%" stop-color="#080808" stop-opacity="0.2" />
-      <stop offset="100%" stop-color="#080808" stop-opacity="0.5" />
-    </linearGradient>
-    <pattern id="batikGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 40 20 L 20 40 L 0 20 Z" fill="none" stroke="#292929" stroke-width="0.8" opacity="0.4"/>
-      <circle cx="20" cy="20" r="3" fill="${accent}" opacity="0.3"/>
-      <path d="M 0 0 L 40 40 M 40 0 L 0 40" stroke="#171717" stroke-width="0.5" opacity="0.3"/>
+    <pattern id="batikOverlay" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 15 0 L 30 15 L 15 30 L 0 15 Z" fill="none" stroke="#222222" stroke-width="0.6" opacity="0.4"/>
+      <circle cx="15" cy="15" r="1.5" fill="${accent}" opacity="0.3"/>
     </pattern>
   </defs>
 
-  <!-- Background -->
+  <!-- Studio Background -->
   <rect width="100%" height="100%" fill="url(#bgGrad)" />
-  <rect width="100%" height="100%" fill="url(#batikGrid)" />
+  <rect width="100%" height="100%" fill="url(#batikOverlay)" />
 
-  <!-- Streetwear Silhouettes / Graphics -->
-  <g opacity="0.85">
-    <!-- Oversized Tee Silhouette -->
-    <path d="M ${width * 0.25} ${height * 0.25} L ${width * 0.35} ${height * 0.2} L ${width * 0.65} ${height * 0.2} L ${width * 0.75} ${height * 0.25} L ${width * 0.85} ${height * 0.4} L ${width * 0.75} ${height * 0.45} L ${width * 0.72} ${height * 0.8} L ${width * 0.28} ${height * 0.8} L ${width * 0.25} ${height * 0.45} L ${width * 0.15} ${height * 0.4} Z" 
-          fill="#111111" stroke="#292929" stroke-width="2"/>
-    <!-- Collar -->
-    <path d="M ${width * 0.4} ${height * 0.2} Q ${width * 0.5} ${height * 0.26} ${width * 0.6} ${height * 0.2}" 
-          fill="none" stroke="${accent}" stroke-width="3" />
-    <!-- Graphic Print on Shirt -->
-    <rect x="${width * 0.36}" y="${height * 0.35}" width="${width * 0.28}" height="${height * 0.3}" fill="#080808" stroke="#292929" rx="4"/>
-    <text x="50%" y="${height * 0.45}" font-family="Bebas Neue, sans-serif" font-size="${width * 0.06}" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="2">
-      LOKAL//LOUD
-    </text>
-    <text x="50%" y="${height * 0.52}" font-family="sans-serif" font-size="${width * 0.035}" font-weight="700" fill="${accent}" text-anchor="middle" letter-spacing="1">
-      ${tag || 'STREET SATIRE'}
-    </text>
+  <!-- Garment Silhouette (Black Heavy Cotton 260GSM) -->
+  <g transform="translate(0, 50)">
+    ${
+      isSleeveless
+        ? `<!-- Sleeveless Cut -->
+           <path d="M 280 160 L 340 140 L 460 140 L 520 160 L 510 320 L 490 350 L 500 780 L 300 780 L 310 350 L 290 320 Z" fill="#111111" stroke="#292929" stroke-width="3"/>
+           <!-- Deep Raw Armhole Ribbing -->
+           <path d="M 520 160 Q 480 250 510 320" fill="none" stroke="#222222" stroke-width="4" stroke-dasharray="4 2"/>
+           <path d="M 280 160 Q 320 250 290 320" fill="none" stroke="#222222" stroke-width="4" stroke-dasharray="4 2"/>`
+        : `<!-- Drop-Shoulder Oversized Tee -->
+           <path d="M 220 210 L 330 140 L 470 140 L 580 210 L 640 370 L 550 410 L 520 340 L 520 780 L 280 780 L 280 340 L 250 410 L 160 370 Z" fill="#111111" stroke="#292929" stroke-width="3"/>
+           <!-- Dropped Shoulder Seam -->
+           <line x1="280" y1="180" x2="280" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
+           <line x1="520" y1="180" x2="520" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>`
+    }
+
+    <!-- Chunky Collar Rib -->
+    <path d="M 330 140 Q 400 200 470 140" fill="none" stroke="#222222" stroke-width="12" />
+    <path d="M 330 140 Q 400 200 470 140" fill="none" stroke="${accent}" stroke-width="2" opacity="0.8"/>
+
+    <!-- Woven Brand Neck Tag Inside -->
+    <rect x="365" y="155" width="70" height="25" fill="#080808" stroke="#333" stroke-width="1"/>
+    <text x="400" y="167" font-family="Bebas Neue, sans-serif" font-size="10" font-weight="bold" fill="#F2EFE8" text-anchor="middle">LOKAL//LOUD</text>
+    <text x="400" y="175" font-family="sans-serif" font-size="6" fill="${accent}" text-anchor="middle">260 GSM • HEAVY</text>
+
+    <!-- Front Chest Graphic Print -->
+    <g transform="translate(400, 360)">
+      <!-- Batik Side Accents -->
+      <path d="M -160 -40 L -140 -40 L -140 40 L -160 40 Z" fill="${accent}" opacity="0.8"/>
+      <path d="M 140 -40 L 160 -40 L 160 40 L 140 40 Z" fill="${accent}" opacity="0.8"/>
+
+      <!-- Main Headline Typography -->
+      <text x="0" y="-5" font-family="Bebas Neue, sans-serif" font-size="52" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="3">
+        ${prod.frontMain}
+      </text>
+
+      <!-- Subtitle English Text -->
+      <text x="0" y="28" font-family="sans-serif" font-size="14" font-weight="800" fill="${accent}" text-anchor="middle" letter-spacing="4">
+        ${prod.frontSub.toUpperCase()}
+      </text>
+
+      <!-- Distressed Streetwear Frame -->
+      <rect x="-130" y="-45" width="260" height="85" fill="none" stroke="#333333" stroke-width="1.5" stroke-dasharray="8 4"/>
+    </g>
+
+    <!-- Woven Hem Label Tag -->
+    <rect x="290" y="750" width="30" height="18" fill="#080808" stroke="${accent}" stroke-width="1"/>
+    <text x="305" y="762" font-family="sans-serif" font-size="7" font-weight="bold" fill="${accent}" text-anchor="middle">🇲🇾 260G</text>
   </g>
 
-  <!-- Dark Overlay for Editorial Depth -->
-  <rect width="100%" height="100%" fill="url(#overlay)" />
-
-  <!-- Badge Top Right -->
-  <rect x="${width - 130}" y="30" width="100" height="28" fill="#111111" stroke="${accent}" stroke-width="1" rx="2"/>
-  <text x="${width - 80}" y="48" font-family="sans-serif" font-size="11" font-weight="800" fill="${accent}" text-anchor="middle">
-    MALAYSIA
-  </text>
-
-  <!-- Typography -->
-  <text x="40" y="${height - 90}" font-family="Bebas Neue, sans-serif" font-size="${width * 0.08}" font-weight="900" fill="#F2EFE8" letter-spacing="2">
-    ${title}
-  </text>
-  <text x="40" y="${height - 50}" font-family="sans-serif" font-size="${width * 0.035}" font-weight="500" fill="#8C8C8C">
-    ${subtitle}
-  </text>
-
-  <!-- Accent Line -->
-  <line x1="40" y1="${height - 35}" x2="${width - 40}" y2="${height - 35}" stroke="#292929" stroke-width="1" />
-  <rect x="40" y="${height - 36}" width="60" height="3" fill="${accent}" />
+  <!-- Editorial Info overlay at bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">FRONT VIEW // 260 GSM DROP-SHOULDER SILHOUETTE</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="${accent}" text-anchor="middle">FRONT</text>
 </svg>`;
 }
 
-const imagesToCreate = [
-  // Hero
-  { path: 'public/images/hero/hero-01.jpg', title: 'BE LOUD. BE LOKAL.', subtitle: 'VOL. 01 STREET SATIRE COLLECTION', tag: 'SEMBANG KENCANG', w: 1600, h: 1000 },
-  { path: 'public/images/hero/hero-02.jpg', title: 'BATIK REWORKED', subtitle: 'WARISAN LAMA. ATTITUDE BARU.', tag: 'BATIK AFTER DARK', w: 1600, h: 1000 },
-  { path: 'public/images/hero/hero-03.jpg', title: 'LEPAK CLUB UNIFORM', subtitle: 'NO AGENDA. JUST VIBES.', tag: 'JOM LEPAK', w: 1600, h: 1000 },
+// Helper to generate SVG mockup for Back View
+function generateBackSVG(prod) {
+  const isSleeveless = prod.type === 'sleeveless';
+  const accent = prod.accentColor;
 
-  // Categories
-  { path: 'public/images/products/cat-oversized-tee.jpg', title: 'OVERSIZED TEE', subtitle: 'Baju Sembang Loose', tag: 'OVERSIZED' },
-  { path: 'public/images/products/cat-sleeveless.jpg', title: 'SLEEVELESS', subtitle: 'Baju Singlet Padu', tag: 'SLEEVELESS' },
-  { path: 'public/images/products/cat-hoodie.jpg', title: 'HOODIE', subtitle: 'Hoodie Lepak KL', tag: 'HOODIE' },
-  { path: 'public/images/products/cat-longsleeve.jpg', title: 'LONG SLEEVE', subtitle: 'Baju Lengan Panjang', tag: 'LONGSLEEVE' },
-  { path: 'public/images/products/cat-shorts.jpg', title: 'SHORTS', subtitle: 'Seluar Pendek Relax', tag: 'SHORTS' },
-  { path: 'public/images/products/cat-accessories.jpg', title: 'ACCESSORIES', subtitle: 'Cap & Crossbody', tag: 'CAP & BAG' },
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+  </defs>
 
-  // Collections
-  { path: 'public/images/collections/collection-local-irony.jpg', title: 'LOCAL IRONY', subtitle: 'Banyak cakap. Sedikit gerak.', tag: 'COLLECTION 01', w: 1000, h: 1250 },
-  { path: 'public/images/collections/collection-batik-dark.jpg', title: 'BATIK AFTER DARK', subtitle: 'Warisan lama. Attitude baru.', tag: 'COLLECTION 02', w: 1000, h: 1250 },
-  { path: 'public/images/collections/collection-lepak-club.jpg', title: 'LEPAK CLUB', subtitle: 'No agenda. Just vibes.', tag: 'COLLECTION 03', w: 1000, h: 1250 },
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
 
-  // Lookbook
-  { path: 'public/images/lookbook/lookbook-01.jpg', title: 'CHINATOWN KL', subtitle: 'Kopitiam Midnight Vibes', tag: 'LOOKBOOK 01', w: 800, h: 1066 },
-  { path: 'public/images/lookbook/lookbook-02.jpg', title: 'BATIK REWORKED', subtitle: 'Studio 03 Subang Jaya', tag: 'LOOKBOOK 02', w: 800, h: 1000 },
-  { path: 'public/images/lookbook/lookbook-03.jpg', title: 'REXKL ALLEYWAY', subtitle: 'Urban Alleyway Attitude', tag: 'LOOKBOOK 03', w: 1600, h: 900 },
-  { path: 'public/images/lookbook/lookbook-04.jpg', title: 'BANGSAR CONCRETE', subtitle: 'Raw Industrial Silhouette', tag: 'LOOKBOOK 04', w: 800, h: 1066 },
-  { path: 'public/images/lookbook/lookbook-05.jpg', title: 'BUKIT BINTANG', subtitle: 'Street Satire Uniform', tag: 'LOOKBOOK 05', w: 800, h: 1000 },
+  <!-- Garment Back Silhouette -->
+  <g transform="translate(0, 50)">
+    ${
+      isSleeveless
+        ? `<path d="M 280 160 L 340 140 L 460 140 L 520 160 L 510 320 L 490 350 L 500 780 L 300 780 L 310 350 L 290 320 Z" fill="#111111" stroke="#292929" stroke-width="3"/>`
+        : `<path d="M 220 210 L 330 140 L 470 140 L 580 210 L 640 370 L 550 410 L 520 340 L 520 780 L 280 780 L 280 340 L 250 410 L 160 370 Z" fill="#111111" stroke="#292929" stroke-width="3"/>
+           <line x1="280" y1="180" x2="280" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>
+           <line x1="520" y1="180" x2="520" y2="340" stroke="#222222" stroke-width="2" stroke-dasharray="4 2"/>`
+    }
 
-  // Social
-  { path: 'public/images/social/social-01.jpg', title: '@AKMAL_STREET', subtitle: 'KL Streetwear Scene', tag: 'UGC 01', w: 600, h: 600 },
-  { path: 'public/images/social/social-02.jpg', title: '@SITI_LOUD', subtitle: 'Batik Sleeveless Fit', tag: 'UGC 02', w: 600, h: 600 },
-  { path: 'public/images/social/social-03.jpg', title: '@SUBANG_CREW', subtitle: 'Sembang Kencang Tee', tag: 'UGC 03', w: 600, h: 600 },
-  { path: 'public/images/social/social-04.jpg', title: '@DANIAL_VIBES', subtitle: 'Jom Lepak Hoodie', tag: 'UGC 04', w: 600, h: 600 },
+    <!-- High Collar Rib Back -->
+    <path d="M 340 140 L 460 140" stroke="#222222" stroke-width="14"/>
 
-  // Products
-  // Product 1
-  { path: 'public/images/products/sembang-kencang-front.jpg', title: 'SEMBANG KENCANG', subtitle: 'FRONT VIEW', tag: 'RM129' },
-  { path: 'public/images/products/sembang-kencang-back.jpg', title: 'SEMBANG KENCANG', subtitle: 'BACK PRINT VIEW', tag: 'RM129' },
-  { path: 'public/images/products/sembang-kencang-detail.jpg', title: 'BATIK EMBROIDERED', subtitle: 'DETAIL CLOSE-UP', tag: '260 GSM' },
-  { path: 'public/images/products/sembang-kencang-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 182CM WEARING L', tag: 'OVERSIZED' },
+    <!-- Large Editorial Back Graphic Print -->
+    <g transform="translate(400, 360)">
+      <!-- Giant Back Slang Typography -->
+      <text x="0" y="-80" font-family="Bebas Neue, sans-serif" font-size="64" font-weight="900" fill="${accent}" text-anchor="middle" letter-spacing="4">
+        ${prod.frontMain}
+      </text>
 
-  // Product 2
-  { path: 'public/images/products/acah-padu-front.jpg', title: 'ACAH PADU', subtitle: 'FRONT VIEW', tag: 'RM109' },
-  { path: 'public/images/products/acah-padu-back.jpg', title: 'ACAH PADU', subtitle: 'BACK VIEW', tag: 'RM109' },
-  { path: 'public/images/products/acah-padu-detail.jpg', title: 'ARMHOLE DETAIL', subtitle: 'RAW CUT DETAIL', tag: '240 GSM' },
-  { path: 'public/images/products/acah-padu-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 178CM WEARING M', tag: 'SLEEVELESS' },
+      <!-- Back Malay Copy -->
+      <rect x="-180" y="-20" width="360" height="60" fill="#080808" stroke="#333" stroke-width="1.5" rx="2"/>
+      <text x="0" y="16" font-family="sans-serif" font-size="18" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
+        "${prod.backCopy}"
+      </text>
 
-  // Product 3
-  { path: 'public/images/products/terpaling-on-front.jpg', title: 'TERPALING ON', subtitle: 'FRONT VIEW', tag: 'RM129' },
-  { path: 'public/images/products/terpaling-on-back.jpg', title: 'TERPALING ON', subtitle: 'BACK GRAPHIC VIEW', tag: 'RM129' },
-  { path: 'public/images/products/terpaling-on-detail.jpg', title: 'SILKSCREEN PRINT', subtitle: 'METALLIC THREAD', tag: 'NEW DROP' },
-  { path: 'public/images/products/terpaling-on-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 185CM WEARING XL', tag: 'OVERSIZED' },
+      <!-- Batik Graphic Box Accent -->
+      <g opacity="0.6">
+        <path d="M -160 70 L 160 70" stroke="${accent}" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="0" y="100" font-family="sans-serif" font-size="11" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
+          MALAYSIAN STREET SATIRE • ORIGINAL ARTWORK
+        </text>
+        <!-- Fake Barcode -->
+        <rect x="-60" y="120" width="120" height="30" fill="#080808" stroke="#333" stroke-width="1"/>
+        <line x1="-50" y1="125" x2="-50" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="-44" y1="125" x2="-44" y2="145" stroke="#FFF" stroke-width="4"/>
+        <line x1="-34" y1="125" x2="-34" y2="145" stroke="#FFF" stroke-width="1"/>
+        <line x1="-25" y1="125" x2="-25" y2="145" stroke="#FFF" stroke-width="3"/>
+        <line x1="-15" y1="125" x2="-15" y2="145" stroke="#FFF" stroke-width="5"/>
+        <line x1="-2" y1="125" x2="-2" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="8" y1="125" x2="8" y2="145" stroke="#FFF" stroke-width="4"/>
+        <line x1="20" y1="125" x2="20" y2="145" stroke="#FFF" stroke-width="2"/>
+        <line x1="30" y1="125" x2="30" y2="145" stroke="#FFF" stroke-width="3"/>
+        <line x1="45" y1="125" x2="45" y2="145" stroke="#FFF" stroke-width="2"/>
+      </g>
+    </g>
+  </g>
 
-  // Product 4
-  { path: 'public/images/products/boleh-lah-front.jpg', title: 'BOLEH LAH', subtitle: 'FRONT VIEW', tag: 'RM109' },
-  { path: 'public/images/products/boleh-lah-back.jpg', title: 'BOLEH LAH', subtitle: 'REFLECTIVE BACK PATCH', tag: 'RM109' },
-  { path: 'public/images/products/boleh-lah-detail.jpg', title: 'DISTRESSED HEM', subtitle: 'DETAIL VIEW', tag: 'CHARCOAL' },
-  { path: 'public/images/products/boleh-lah-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 175CM WEARING M', tag: 'LIMITED' },
+  <!-- Editorial Info overlay at bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "${prod.backCopy}"</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="${accent}" text-anchor="middle">BACK</text>
+</svg>`;
+}
 
-  // Product 5
-  { path: 'public/images/products/padu-gila-front.jpg', title: 'PADU GILA', subtitle: 'FRONT VIEW', tag: 'RM129' },
-  { path: 'public/images/products/padu-gila-back.jpg', title: 'PADU GILA', subtitle: 'ACID LIME PRINT', tag: 'RM129' },
-  { path: 'public/images/products/padu-gila-detail.jpg', title: 'SHADOW WATERMARK', subtitle: 'BATIK EMBOSS', tag: 'HOT' },
-  { path: 'public/images/products/padu-gila-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 180CM WEARING L', tag: 'OVERSIZED' },
+// Helper to generate SVG mockup for Detail View
+function generateDetailSVG(prod) {
+  const accent = prod.accentColor;
 
-  // Product 6-10
-  { path: 'public/images/products/jom-lepak-front.jpg', title: 'JOM LEPAK HOODIE', subtitle: 'FRONT VIEW', tag: 'RM239' },
-  { path: 'public/images/products/jom-lepak-back.jpg', title: 'JOM LEPAK HOODIE', subtitle: 'BACK VIEW', tag: 'RM239' },
-  { path: 'public/images/products/jom-lepak-detail.jpg', title: '3D EMBROIDERY', subtitle: '420 GSM FLEECE', tag: 'NEW DROP' },
-  { path: 'public/images/products/jom-lepak-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 183CM WEARING L', tag: 'HOODIE' },
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050505" />
+      <stop offset="100%" stop-color="#141414" />
+    </linearGradient>
+    <pattern id="fabricWeave" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M 0 4 L 8 4 M 4 0 L 4 8" stroke="#1c1c1c" stroke-width="1"/>
+    </pattern>
+  </defs>
 
-  { path: 'public/images/products/ngam-lah-front.jpg', title: 'NGAM LAH LONGSLEEVE', subtitle: 'FRONT VIEW', tag: 'RM159' },
-  { path: 'public/images/products/ngam-lah-back.jpg', title: 'NGAM LAH LONGSLEEVE', subtitle: 'BACK VIEW', tag: 'RM159' },
-  { path: 'public/images/products/ngam-lah-detail.jpg', title: 'BATIK SLEEVE PRINT', subtitle: 'DETAIL VIEW', tag: 'LIMITED' },
-  { path: 'public/images/products/ngam-lah-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 180CM WEARING L', tag: 'LONGSLEEVE' },
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#fabricWeave)" />
 
-  { path: 'public/images/products/syok-lah-front.jpg', title: 'SYOK LAH SHORTS', subtitle: 'FRONT VIEW', tag: 'RM139' },
-  { path: 'public/images/products/syok-lah-back.jpg', title: 'SYOK LAH SHORTS', subtitle: 'BACK VIEW', tag: 'RM139' },
-  { path: 'public/images/products/syok-lah-detail.jpg', title: 'CARGO POCKETS', subtitle: 'ACID LIME TIPS', tag: 'SHORTS' },
-  { path: 'public/images/products/syok-lah-model.jpg', title: 'MODEL FIT', subtitle: 'MODEL IS 178CM WEARING M', tag: 'SHORTS' },
+  <!-- Macro Detail Showcase Box -->
+  <g transform="translate(100, 150)">
+    <rect width="600" height="600" fill="#0c0c0c" stroke="#292929" stroke-width="2" rx="4"/>
+    <rect width="600" height="600" fill="url(#fabricWeave)" opacity="0.6"/>
 
-  { path: 'public/images/products/cap-front.jpg', title: 'LOKAL CAP', subtitle: 'FRONT VIEW', tag: 'RM89' },
-  { path: 'public/images/products/cap-back.jpg', title: 'LOKAL CAP', subtitle: 'STRAPBACK VIEW', tag: 'RM89' },
-  { path: 'public/images/products/cap-detail.jpg', title: 'DISTRESSED TWILL', subtitle: '3D EMBROIDERY', tag: 'CAP' },
-  { path: 'public/images/products/cap-model.jpg', title: 'MODEL FIT', subtitle: 'STREET LOOK', tag: 'CAP' },
+    <!-- High Density Print Detail Macro -->
+    <g transform="translate(300, 240)">
+      <circle cx="0" cy="0" r="160" fill="#080808" stroke="${accent}" stroke-width="2" stroke-dasharray="10 5"/>
+      <text x="0" y="-20" font-family="Bebas Neue, sans-serif" font-size="56" fill="#F2EFE8" text-anchor="middle" font-weight="900">
+        ${prod.frontMain.split(' ')[0]}
+      </text>
+      <text x="0" y="25" font-family="sans-serif" font-size="14" fill="${accent}" text-anchor="middle" font-weight="900" letter-spacing="3">
+        260 GSM SILKSCREEN
+      </text>
 
-  { path: 'public/images/products/bag-front.jpg', title: 'BATIK SLING BAG', subtitle: 'FRONT VIEW', tag: 'RM119' },
-  { path: 'public/images/products/bag-back.jpg', title: 'BATIK SLING BAG', subtitle: 'BACK POCKET VIEW', tag: 'RM119' },
-  { path: 'public/images/products/bag-detail.jpg', title: 'BATIK LINED INTERIOR', subtitle: 'FIDLOCK BUCKLE', tag: 'BAG' },
-  { path: 'public/images/products/bag-model.jpg', title: 'MODEL FIT', subtitle: 'CROSSBODY FIT', tag: 'BAG' },
-];
+      <!-- Batik Corner Embroidery Motif -->
+      <path d="M -80 60 Q 0 100 80 60" fill="none" stroke="${accent}" stroke-width="3"/>
+      <circle cx="0" cy="80" r="5" fill="${accent}"/>
+    </g>
 
-imagesToCreate.forEach((item) => {
-  const svg = createStreetwearSVG(item.title, item.subtitle, item.tag, item.w || 800, item.h || 1000);
-  const fullPath = path.join(__dirname, '..', item.path);
-  fs.writeFileSync(fullPath, svg, 'utf8');
+    <!-- Spec Badges -->
+    <rect x="30" y="520" width="160" height="50" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="110" y="542" font-family="sans-serif" font-size="10" font-weight="bold" fill="#F2EFE8" text-anchor="middle">240-260 GSM</text>
+    <text x="110" y="556" font-family="sans-serif" font-size="8" fill="#8C8C8C" text-anchor="middle">HEAVY COTTON</text>
+
+    <rect x="220" y="520" width="160" height="50" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="300" y="542" font-family="sans-serif" font-size="10" font-weight="bold" fill="${accent}" text-anchor="middle">HIGH-DENSITY</text>
+    <text x="300" y="556" font-family="sans-serif" font-size="8" fill="#8C8C8C" text-anchor="middle">PUFF SCREENPRINT</text>
+
+    <rect x="410" y="520" width="160" height="50" fill="#141414" stroke="#333" stroke-width="1"/>
+    <text x="490" y="542" font-family="sans-serif" font-size="10" font-weight="bold" fill="#F2EFE8" text-anchor="middle">BATIK REWORKED</text>
+    <text x="490" y="556" font-family="sans-serif" font-size="8" fill="#8C8C8C" text-anchor="middle">TRADITIONAL ACCENT</text>
+  </g>
+
+  <!-- Editorial Info overlay at bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">FABRIC & PRINT MACRO DETAIL // HEAVY COTTON WEAVE</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="${accent}" text-anchor="middle">DETAIL</text>
+</svg>`;
+}
+
+// Helper to generate SVG mockup for Model View
+function generateModelSVG(prod) {
+  const accent = prod.accentColor;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#171717" />
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+
+  <!-- Urban Industrial Street Background Grid -->
+  <line x1="0" y1="200" x2="800" y2="200" stroke="#1c1c1c" stroke-width="1"/>
+  <line x1="0" y1="400" x2="800" y2="400" stroke="#1c1c1c" stroke-width="1"/>
+  <line x1="0" y1="600" x2="800" y2="600" stroke="#1c1c1c" stroke-width="1"/>
+  <line x1="0" y1="800" x2="800" y2="800" stroke="#1c1c1c" stroke-width="1"/>
+
+  <!-- Stylized Editorial Model Silhouette Wear Preview -->
+  <g transform="translate(400, 480)">
+    <!-- Head / Mask Silhouette -->
+    <circle cx="0" cy="-300" r="45" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+    <!-- Bucket Cap -->
+    <path d="M -55 -315 L 55 -315 L 65 -300 L -65 -300 Z" fill="#080808" stroke="${accent}" stroke-width="2"/>
+
+    <!-- Model Body wearing Garment -->
+    <path d="M -160 -240 L -80 -255 L 80 -255 L 160 -240 L 210 -50 L 150 -30 L 130 -120 L 130 180 L -130 180 L -130 -120 L -150 -30 L -210 -50 Z" fill="#111111" stroke="#333" stroke-width="3"/>
+
+    <!-- Front Print on Model -->
+    <text x="0" y="-120" font-family="Bebas Neue, sans-serif" font-size="36" fill="#F2EFE8" text-anchor="middle" font-weight="900">
+      ${prod.frontMain}
+    </text>
+    <text x="0" y="-95" font-family="sans-serif" font-size="10" fill="${accent}" text-anchor="middle" font-weight="bold">
+      ${prod.frontSub.toUpperCase()}
+    </text>
+
+    <!-- Cargo Pants & Sneaker Preview -->
+    <path d="M -120 180 L -30 180 L -20 400 L -90 400 Z" fill="#0d0d0d" stroke="#222" stroke-width="2"/>
+    <path d="M 30 180 L 120 180 L 90 400 L 20 400 Z" fill="#0d0d0d" stroke="#222" stroke-width="2"/>
+  </g>
+
+  <!-- Model Info Tag -->
+  <rect x="40" y="40" width="220" height="60" fill="#111111" stroke="#292929" stroke-width="1" rx="2"/>
+  <text x="55" y="62" font-family="sans-serif" font-size="11" font-weight="bold" fill="${accent}">STREET LOOKBOOK // KL</text>
+  <text x="55" y="80" font-family="sans-serif" font-size="10" fill="#8C8C8C">MODEL IS 182CM WEARING SIZE L</text>
+
+  <!-- Editorial Info overlay at bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="28" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">ON MODEL EDITORIAL LOOK // KUALA LUMPUR STREETS</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="${accent}" text-anchor="middle">MODEL</text>
+</svg>`;
+}
+
+// Generate images for all 12 products
+PRODUCTS_DATA.forEach((prod) => {
+  const prodDir = path.join(__dirname, '..', 'public', 'images', 'products', prod.slug);
+  if (!fs.existsSync(prodDir)) {
+    fs.mkdirSync(prodDir, { recursive: true });
+  }
+
+  fs.writeFileSync(path.join(prodDir, 'front.jpg'), generateFrontSVG(prod), 'utf8');
+  fs.writeFileSync(path.join(prodDir, 'back.jpg'), generateBackSVG(prod), 'utf8');
+  fs.writeFileSync(path.join(prodDir, 'detail.jpg'), generateDetailSVG(prod), 'utf8');
+  fs.writeFileSync(path.join(prodDir, 'model.jpg'), generateModelSVG(prod), 'utf8');
+
+  console.log(`Generated product visual suite for [${prod.slug}]`);
 });
 
-console.log(`Successfully generated ${imagesToCreate.length} streetwear visual assets.`);
+console.log('All 12 products (48 visual image files) successfully generated in 4:5 aspect ratio!');

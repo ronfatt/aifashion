@@ -1,22 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
+import { useParams } from "next/navigation";
 import {
   Heart,
   ShoppingBag,
   Check,
-  Truck,
-  RotateCcw,
-  ShieldCheck,
   ChevronDown,
   Ruler,
   Plus,
   Minus,
   ArrowRight,
-  Share2,
   AlertCircle,
 } from "lucide-react";
 import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/data/products";
@@ -100,7 +95,7 @@ export default function ProductDetailPage() {
     }
     setErrorMessage("");
     addToCart(product, selectedSize, selectedColor || product.colors[0]?.name || "Default", quantity);
-    alert("Redirecting to Express FPX / Card Checkout!");
+    alert("Redirecting to Express FPX / Card Payment Gateway!");
   };
 
   const toggleAccordion = (id: string) => {
@@ -113,7 +108,7 @@ export default function ProductDetailPage() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        {/* Breadcrumb Navigation */}
+        {/* Breadcrumb */}
         <nav className="flex items-center space-x-2 text-xs font-mono text-[#8C8C8C] mb-8">
           <Link href="/" className="hover:text-[#C8FF00]">
             HOME
@@ -146,6 +141,9 @@ export default function ProductDetailPage() {
                     className="w-full h-full bg-cover bg-center"
                     style={{ backgroundImage: `url(${img.url})` }}
                   />
+                  <span className="absolute bottom-1 right-1 px-1 bg-[#080808]/80 text-[8px] font-mono text-[#C8FF00] uppercase font-bold">
+                    {img.key}
+                  </span>
                 </button>
               ))}
             </div>
@@ -154,7 +152,7 @@ export default function ProductDetailPage() {
             <div className="relative flex-grow aspect-[4/5] bg-[#111111] border border-[#292929] rounded-sm overflow-hidden group">
               {product.badge && (
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1 bg-[#C8FF00] text-[#080808] font-mono text-xs font-extrabold tracking-wider uppercase rounded-xs">
+                  <span className="px-3 py-1 bg-[#C8FF00] text-[#080808] font-mono text-xs font-extrabold tracking-wider uppercase rounded-xs shadow-lg">
                     {product.badge}
                   </span>
                 </div>
@@ -179,7 +177,7 @@ export default function ProductDetailPage() {
                 <span className="text-xs font-mono text-[#C8FF00] font-black tracking-widest uppercase bg-[#171717] px-2.5 py-1 border border-[#292929] rounded-sm">
                   {product.series}
                 </span>
-                <span className="text-xs font-mono text-[#8C8C8C] uppercase">
+                <span className="text-xs font-mono uppercase">
                   {product.stockStatus === "IN STOCK" ? (
                     <span className="text-emerald-400 font-bold">● IN STOCK (SHIPS IN 24H)</span>
                   ) : (
@@ -193,7 +191,19 @@ export default function ProductDetailPage() {
                 {product.name}
               </h1>
 
-              <p className="text-sm font-mono text-[#8C8C8C] mt-2 italic">{product.subtitle}</p>
+              <p className="text-sm font-mono text-[#8C8C8C] mt-2 italic">"{product.subtitle}"</p>
+
+              {/* Design Print Details Box */}
+              <div className="my-4 p-3 bg-[#111111] border border-[#292929] rounded-sm space-y-1 text-xs font-mono text-[#8C8C8C]">
+                <div className="flex justify-between">
+                  <span>FRONT PRINT:</span>
+                  <span className="text-[#F2EFE8] font-bold">{product.frontMain}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>BACK COPY:</span>
+                  <span className="text-[#C8FF00] font-bold">"{product.backCopy}"</span>
+                </div>
+              </div>
 
               {/* Price Display */}
               <div className="flex items-baseline space-x-3 mt-4">
@@ -205,13 +215,13 @@ export default function ProductDetailPage() {
                     RM{product.compareAtPrice}
                   </span>
                 )}
-                <span className="text-[11px] font-mono text-[#8C8C8C]">Taxes included. Free MY shipping over RM200.</span>
+                <span className="text-[11px] font-mono text-[#8C8C8C]">Free MY shipping &gt; RM200.</span>
               </div>
             </div>
 
             <hr className="border-[#292929]" />
 
-            {/* Error Message Toast if No Size Selected */}
+            {/* Error Toast */}
             {errorMessage && (
               <div className="p-3 bg-red-900/40 border border-red-500 text-red-200 text-xs font-mono rounded flex items-center space-x-2 animate-bounce">
                 <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
@@ -230,7 +240,7 @@ export default function ProductDetailPage() {
                     <button
                       key={color.name}
                       onClick={() => setSelectedColor(color.name)}
-                      className={`w-8 h-8 rounded-full border-2 transition-all flex items-center justify-center ${
+                      className={`w-9 h-9 rounded-full border-2 transition-all flex items-center justify-center ${
                         selectedColor === color.name
                           ? "border-[#C8FF00] scale-110 shadow-[0_0_10px_rgba(200,255,0,0.4)]"
                           : "border-[#292929] opacity-80 hover:opacity-100"
@@ -274,7 +284,7 @@ export default function ProductDetailPage() {
                       setSelectedSize(size);
                       setErrorMessage("");
                     }}
-                    className={`py-3 text-xs font-mono font-bold rounded-sm border transition-all ${
+                    className={`min-h-[44px] py-3 text-xs font-mono font-bold rounded-sm border transition-all ${
                       selectedSize === size
                         ? "bg-[#C8FF00] text-[#080808] border-[#C8FF00] shadow-[0_0_15px_rgba(200,255,0,0.3)]"
                         : "bg-[#111111] text-[#F2EFE8] border-[#292929] hover:border-[#C8FF00]"
@@ -292,7 +302,7 @@ export default function ProductDetailPage() {
               <div className="inline-flex items-center space-x-4 bg-[#111111] border border-[#292929] rounded-sm px-4 py-2">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="text-[#8C8C8C] hover:text-[#C8FF00]"
+                  className="min-w-[32px] min-h-[32px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00]"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -301,18 +311,18 @@ export default function ProductDetailPage() {
                 </span>
                 <button
                   onClick={() => setQuantity((q) => q + 1)}
-                  className="text-[#8C8C8C] hover:text-[#C8FF00]"
+                  className="min-w-[32px] min-h-[32px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00]"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
-            {/* Action Buttons: Add to Cart, Buy Now, Wishlist */}
+            {/* Action Buttons */}
             <div className="space-y-3 pt-2">
               <button
                 onClick={handleAddToCart}
-                className="w-full py-4 bg-[#C8FF00] text-[#080808] font-mono text-sm font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] transition-all flex items-center justify-center space-x-2 shadow-2xl"
+                className="w-full min-h-[48px] py-4 bg-[#C8FF00] text-[#080808] font-mono text-sm font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] active:scale-98 transition-all flex items-center justify-center space-x-2 shadow-2xl"
               >
                 <ShoppingBag className="w-4 h-4" />
                 <span>ADD TO CART</span>
@@ -320,14 +330,14 @@ export default function ProductDetailPage() {
 
               <button
                 onClick={handleBuyNow}
-                className="w-full py-4 bg-[#111111] border border-[#292929] text-[#F2EFE8] font-mono text-sm font-bold tracking-widest uppercase rounded-sm hover:border-[#C8FF00] hover:text-[#C8FF00] transition-colors"
+                className="w-full min-h-[48px] py-4 bg-[#111111] border border-[#292929] text-[#F2EFE8] font-mono text-sm font-bold tracking-widest uppercase rounded-sm hover:border-[#C8FF00] hover:text-[#C8FF00] transition-colors"
               >
                 BUY IT NOW
               </button>
 
               <button
                 onClick={() => toggleWishlist(product.id)}
-                className="w-full py-3 bg-transparent border border-[#292929] text-[#8C8C8C] font-mono text-xs hover:text-[#F2EFE8] transition-colors rounded-sm flex items-center justify-center space-x-2"
+                className="w-full min-h-[44px] py-3 bg-transparent border border-[#292929] text-[#8C8C8C] font-mono text-xs hover:text-[#F2EFE8] transition-colors rounded-sm flex items-center justify-center space-x-2"
               >
                 <Heart className={`w-4 h-4 ${liked ? "fill-current text-[#C8FF00]" : ""}`} />
                 <span>{liked ? "REMOVE FROM WISHLIST" : "ADD TO WISHLIST"}</span>
@@ -375,7 +385,7 @@ export default function ProductDetailPage() {
                     <p>• <strong>Material:</strong> {product.material}</p>
                     <p>• <strong>Print:</strong> {product.print}</p>
                     <p>• <strong>Origin:</strong> {product.origin}</p>
-                    <p>• <strong>Silhouettes:</strong> Drop shoulder boxy cut</p>
+                    <p>• <strong>Silhouette:</strong> Oversized drop-shoulder boxy fit</p>
                   </div>
                 )}
               </div>
@@ -460,25 +470,17 @@ export default function ProductDetailPage() {
         </div>
         <button
           onClick={handleAddToCart}
-          className="px-5 py-3 bg-[#C8FF00] text-[#080808] font-mono text-xs font-black tracking-wider uppercase rounded-sm flex items-center space-x-1.5 whitespace-nowrap shadow-xl"
+          className="min-h-[44px] px-5 py-3 bg-[#C8FF00] text-[#080808] font-mono text-xs font-black tracking-wider uppercase rounded-sm flex items-center space-x-1.5 whitespace-nowrap shadow-xl"
         >
           <ShoppingBag className="w-4 h-4" />
           <span>ADD TO CART</span>
         </button>
       </div>
 
-      {/* Size Guide Modal */}
       <SizeGuideModal isOpen={isSizeGuideOpen} onClose={() => setIsSizeGuideOpen(false)} />
-
-      {/* Cart Drawer */}
       <CartDrawer />
-
-      {/* Wishlist Drawer */}
       <WishlistDrawer />
-
-      {/* Search Modal */}
       <SearchModal />
-
       <Footer />
     </div>
   );
