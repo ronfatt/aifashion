@@ -13,6 +13,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -20,12 +21,19 @@ html {
   background-color: #080808;
   color: #F2EFE8;
   font-family: var(--font-inter);
+  overflow-x: hidden;
 }
 
 body {
   background-color: #080808;
   color: #F2EFE8;
   overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+/* Ensure minimum touch target for mobile accessibility */
+button, a {
+  touch-action: manipulation;
 }
 
 /* Custom Scrollbar */
@@ -69,11 +77,17 @@ body {
   color: transparent;
 }
 
-/* Smooth Hide Scrollbar for Horizontal Scroll */
+/* Hide Scrollbar for Horizontal Scroll */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid #C8FF00;
+  outline-offset: 2px;
 }

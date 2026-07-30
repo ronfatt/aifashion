@@ -35,6 +35,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
           {/* Drawer Menu Panel */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile Navigation Menu"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -49,7 +52,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                 </span>
                 <button
                   onClick={onClose}
-                  className="p-2 text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
+                  aria-label="Close mobile menu"
                 >
                   <X className="w-6 h-6" />
                 </button>
@@ -62,7 +66,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     onClose();
                     openSearch();
                   }}
-                  className="flex flex-col items-center justify-center py-3 bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors"
+                  className="flex flex-col items-center justify-center py-3 min-h-[50px] bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors"
+                  aria-label="Open search modal"
                 >
                   <Search className="w-5 h-5 text-[#C8FF00] mb-1" />
                   <span className="text-[11px] font-mono text-[#8C8C8C]">SEARCH</span>
@@ -72,7 +77,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     onClose();
                     openWishlist();
                   }}
-                  className="flex flex-col items-center justify-center py-3 bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors relative"
+                  className="flex flex-col items-center justify-center py-3 min-h-[50px] bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors relative"
+                  aria-label="Open wishlist drawer"
                 >
                   <Heart className="w-5 h-5 text-[#C8FF00] mb-1" />
                   <span className="text-[11px] font-mono text-[#8C8C8C]">WISHLIST</span>
@@ -87,7 +93,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                     onClose();
                     openCart();
                   }}
-                  className="flex flex-col items-center justify-center py-3 bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors relative"
+                  className="flex flex-col items-center justify-center py-3 min-h-[50px] bg-[#111111] border border-[#292929] rounded hover:border-[#C8FF00] transition-colors relative"
+                  aria-label="Open cart drawer"
                 >
                   <ShoppingBag className="w-5 h-5 text-[#C8FF00] mb-1" />
                   <span className="text-[11px] font-mono text-[#8C8C8C]">CART</span>
@@ -100,13 +107,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
               </div>
 
               {/* Navigation Links */}
-              <nav className="flex flex-col space-y-4">
+              <nav className="flex flex-col space-y-3">
                 {MAIN_NAV.map((link, idx) => (
                   <Link
                     key={link.label}
                     href={link.href}
                     onClick={onClose}
-                    className="flex items-center justify-between py-3 text-xl font-display tracking-widest text-[#F2EFE8] hover:text-[#C8FF00] border-b border-[#171717] group transition-colors"
+                    className="flex items-center justify-between min-h-[48px] px-2 text-xl font-display tracking-widest text-[#F2EFE8] hover:text-[#C8FF00] border-b border-[#171717] group transition-colors"
                   >
                     <div className="flex items-center space-x-3">
                       <span className="text-xs font-mono text-[#8C8C8C]">0{idx + 1}</span>
@@ -125,9 +132,9 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
 
             {/* Bottom Footer Info */}
             <div className="pt-6 border-t border-[#292929] space-y-4">
-              <div className="flex items-center justify-between text-xs text-[#8C8C8C]">
+              <div className="flex items-center justify-between text-xs font-mono text-[#8C8C8C]">
                 <span>MALAYSIA · MYR</span>
-                <span>FREE SHIPPING &gt; RM200</span>
+                <span className="text-[#C8FF00]">FREE SHIPPING &gt; RM200</span>
               </div>
               <p className="text-xs text-[#8C8C8C] font-mono leading-relaxed">
                 {SITE_CONFIG.tagline}
@@ -137,7 +144,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
                   href={SITE_CONFIG.social.instagram}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 bg-[#111111] border border-[#292929] rounded text-[#F2EFE8] hover:text-[#C8FF00]"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center bg-[#111111] border border-[#292929] rounded text-[#F2EFE8] hover:text-[#C8FF00]"
+                  aria-label="Follow us on Instagram"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, Truck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,8 +33,11 @@ export const CartDrawer: React.FC = () => {
             className="fixed inset-0 bg-black/80 backdrop-blur-md z-50"
           />
 
-          {/* Cart Panel Drawer (Right side) */}
+          {/* Cart Panel Drawer */}
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Shopping Cart Drawer"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -53,7 +55,7 @@ export const CartDrawer: React.FC = () => {
               </div>
               <button
                 onClick={closeCart}
-                className="p-2 text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
                 aria-label="Close cart"
               >
                 <X className="w-6 h-6" />
@@ -96,7 +98,7 @@ export const CartDrawer: React.FC = () => {
                   </p>
                   <button
                     onClick={closeCart}
-                    className="px-6 py-3 bg-[#C8FF00] text-[#080808] font-mono text-xs font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] transition-colors"
+                    className="min-h-[44px] px-6 py-3 bg-[#C8FF00] text-[#080808] font-mono text-xs font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] transition-colors"
                   >
                     START SHOPPING
                   </button>
@@ -112,6 +114,8 @@ export const CartDrawer: React.FC = () => {
                       <div
                         className="w-full h-full bg-cover bg-center"
                         style={{ backgroundImage: `url(${item.product.images.front})` }}
+                        role="img"
+                        aria-label={item.product.name}
                       />
                     </div>
 
@@ -124,7 +128,8 @@ export const CartDrawer: React.FC = () => {
                           </h4>
                           <button
                             onClick={() => removeFromCart(item.id)}
-                            className="p-1 text-[#8C8C8C] hover:text-red-400 transition-colors"
+                            className="p-2 text-[#8C8C8C] hover:text-red-400 transition-colors"
+                            aria-label={`Remove ${item.product.name} from cart`}
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -142,7 +147,8 @@ export const CartDrawer: React.FC = () => {
                         <div className="flex items-center space-x-2 bg-[#080808] border border-[#292929] rounded-sm px-2 py-1">
                           <button
                             onClick={() => updateQuantity(item.id, -1)}
-                            className="text-[#8C8C8C] hover:text-[#C8FF00]"
+                            className="min-w-[32px] min-h-[32px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00]"
+                            aria-label="Decrease quantity"
                           >
                             <Minus className="w-3 h-3" />
                           </button>
@@ -151,7 +157,8 @@ export const CartDrawer: React.FC = () => {
                           </span>
                           <button
                             onClick={() => updateQuantity(item.id, 1)}
-                            className="text-[#8C8C8C] hover:text-[#C8FF00]"
+                            className="min-w-[32px] min-h-[32px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00]"
+                            aria-label="Increase quantity"
                           >
                             <Plus className="w-3 h-3" />
                           </button>
@@ -196,7 +203,7 @@ export const CartDrawer: React.FC = () => {
                       alert("Order Processing Demo: Redirecting to Secure FPX Payment Gateway!");
                       closeCart();
                     }}
-                    className="w-full py-4 bg-[#C8FF00] text-[#080808] font-mono text-sm font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] transition-all flex items-center justify-center space-x-2 shadow-xl"
+                    className="w-full min-h-[48px] py-4 bg-[#C8FF00] text-[#080808] font-mono text-sm font-black tracking-widest uppercase rounded-sm hover:bg-[#d4ff33] active:scale-98 transition-all flex items-center justify-center space-x-2 shadow-xl"
                   >
                     <span>CHECKOUT NOW</span>
                     <ArrowRight className="w-4 h-4" />
@@ -204,7 +211,7 @@ export const CartDrawer: React.FC = () => {
 
                   <button
                     onClick={closeCart}
-                    className="w-full py-2.5 bg-[#080808] border border-[#292929] text-[#8C8C8C] font-mono text-xs hover:text-[#F2EFE8] transition-colors rounded-sm text-center"
+                    className="w-full min-h-[44px] py-2.5 bg-[#080808] border border-[#292929] text-[#8C8C8C] font-mono text-xs hover:text-[#F2EFE8] transition-colors rounded-sm text-center"
                   >
                     CONTINUE SHOPPING
                   </button>

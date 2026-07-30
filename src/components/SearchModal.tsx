@@ -27,7 +27,7 @@ export const SearchModal: React.FC = () => {
           p.subtitle.toLowerCase().includes(q) ||
           p.category.toLowerCase().includes(q) ||
           p.description.toLowerCase().includes(q)
-        )
+        );
       })
     : [];
 
@@ -45,6 +45,9 @@ export const SearchModal: React.FC = () => {
     <AnimatePresence>
       {isSearchOpen && (
         <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Search catalog"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -58,7 +61,7 @@ export const SearchModal: React.FC = () => {
               </span>
               <button
                 onClick={closeSearch}
-                className="p-2 text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
+                className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#8C8C8C] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
                 aria-label="Close search"
               >
                 <X className="w-6 h-6" />
@@ -75,11 +78,13 @@ export const SearchModal: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by slang, product name, series (e.g. Sembang Kencang, Padu)..."
                 className="w-full bg-[#111111] border-2 border-[#292929] focus:border-[#C8FF00] text-xl sm:text-2xl font-mono text-[#F2EFE8] placeholder-[#8C8C8C] pl-14 pr-12 py-5 rounded-sm focus:outline-none transition-colors"
+                aria-label="Search input"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8C8C8C] hover:text-[#F2EFE8]"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-[#8C8C8C] hover:text-[#F2EFE8]"
+                  aria-label="Clear search input"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -97,7 +102,7 @@ export const SearchModal: React.FC = () => {
                     <button
                       key={term}
                       onClick={() => setSearchQuery(term)}
-                      className="px-3.5 py-2 bg-[#111111] border border-[#292929] text-xs font-mono text-[#F2EFE8] hover:border-[#C8FF00] hover:text-[#C8FF00] rounded-sm transition-colors flex items-center space-x-1.5"
+                      className="min-h-[44px] px-3.5 py-2 bg-[#111111] border border-[#292929] text-xs font-mono text-[#F2EFE8] hover:border-[#C8FF00] hover:text-[#C8FF00] rounded-sm transition-colors flex items-center space-x-1.5"
                     >
                       <Sparkles className="w-3 h-3 text-[#C8FF00]" />
                       <span>{term}</span>
@@ -134,6 +139,8 @@ export const SearchModal: React.FC = () => {
                           <div
                             className="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform"
                             style={{ backgroundImage: `url(${product.images.front})` }}
+                            role="img"
+                            aria-label={product.name}
                           />
                         </div>
 

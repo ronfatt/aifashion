@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Search, Heart, ShoppingBag, Menu, X, User } from "lucide-react";
+import { Search, Heart, ShoppingBag, Menu, User } from "lucide-react";
 import { MAIN_NAV } from "@/data/navigation";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
@@ -38,8 +38,8 @@ export const Navbar: React.FC = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="group flex items-center space-x-1.5 focus:outline-none">
+          {/* Brand Logo */}
+          <Link href="/" className="group flex items-center space-x-1.5 focus:outline-none" aria-label="LOKAL//LOUD Homepage">
             <span className="font-display text-2xl sm:text-3xl tracking-wider text-[#F2EFE8] group-hover:text-[#C8FF00] transition-colors font-extrabold">
               LOKAL<span className="text-[#C8FF00]">//</span>LOUD
             </span>
@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8" aria-label="Main Navigation">
             {MAIN_NAV.map((link) => (
               <Link
                 key={link.label}
@@ -63,27 +63,27 @@ export const Navbar: React.FC = () => {
                   </span>
                 )}
                 {/* Hover Acid Lime Underline */}
-                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C8FF00] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#C8FF00] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
           {/* Right Action Icons */}
-          <div className="flex items-center space-x-3 sm:space-x-5">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Search Button */}
             <button
               onClick={openSearch}
-              className="p-2 text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative"
-              aria-label="Search items"
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative"
+              aria-label="Search catalog"
             >
-              <Search className="w-5 h-5 sm:w-5 sm:h-5" />
+              <Search className="w-5 h-5" />
             </button>
 
             {/* Account Icon */}
             <button
-              onClick={() => alert("Customer Portal coming soon! Login with mobile or email.")}
-              className="hidden sm:flex p-2 text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
-              aria-label="Account"
+              onClick={() => alert("Customer Portal demo: Login with mobile or email.")}
+              className="hidden sm:flex p-2.5 min-w-[44px] min-h-[44px] items-center justify-center text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors"
+              aria-label="Account login"
             >
               <User className="w-5 h-5" />
             </button>
@@ -91,12 +91,12 @@ export const Navbar: React.FC = () => {
             {/* Wishlist Icon */}
             <button
               onClick={openWishlist}
-              className="p-2 text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative"
-              aria-label="Wishlist"
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative"
+              aria-label={`View wishlist (${wishlistCount} items)`}
             >
               <Heart className="w-5 h-5" />
               {wishlistCount > 0 && (
-                <span className="absolute top-1 right-1 w-4 h-4 bg-[#C8FF00] text-[#080808] text-[10px] font-extrabold rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 w-4 h-4 bg-[#C8FF00] text-[#080808] text-[10px] font-extrabold rounded-full flex items-center justify-center shadow-md">
                   {wishlistCount}
                 </span>
               )}
@@ -105,12 +105,12 @@ export const Navbar: React.FC = () => {
             {/* Cart Icon */}
             <button
               onClick={openCart}
-              className="p-2 text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative flex items-center space-x-1"
-              aria-label="Cart"
+              className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-full transition-colors relative"
+              aria-label={`View shopping cart (${totalItems} items)`}
             >
               <ShoppingBag className="w-5 h-5" />
               {totalItems > 0 && (
-                <span className="absolute top-1 right-1 min-w-[18px] h-4 px-1 bg-[#C8FF00] text-[#080808] text-[10px] font-black rounded-full flex items-center justify-center">
+                <span className="absolute top-1 right-1 min-w-[18px] h-4 px-1 bg-[#C8FF00] text-[#080808] text-[10px] font-black rounded-full flex items-center justify-center shadow-md">
                   {totalItems}
                 </span>
               )}
@@ -119,8 +119,9 @@ export const Navbar: React.FC = () => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-md transition-colors"
-              aria-label="Open mobile menu"
+              className="lg:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#F2EFE8] hover:text-[#C8FF00] hover:bg-[#171717] rounded-md transition-colors"
+              aria-label="Open mobile navigation menu"
+              aria-expanded={isMobileMenuOpen}
             >
               <Menu className="w-6 h-6" />
             </button>
