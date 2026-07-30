@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050505" />
       <stop offset="50%" stop-color="#0a0a0a" />
       <stop offset="100%" stop-color="#141414" />
@@ -11,14 +11,14 @@
     </pattern>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#studioBg)" />
 
   <g transform="translate(0, 40)">
     <path d="M 210 200 L 330 130 L 470 130 L 590 200 L 650 360 L 555 400 L 520 330 L 520 760 L 280 760 L 280 330 L 245 400 L 150 360 Z" fill="url(#cottonTexture)" stroke="#222222" stroke-width="3"/>
            <line x1="280" y1="170" x2="280" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>
            <line x1="520" y1="170" x2="520" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>
 
-    <!-- Collar Rib Back -->
+    <!-- Collar Back -->
     <path d="M 330 130 L 470 130" stroke="#1c1c1c" stroke-width="14"/>
 
     <!-- Large Back Slang Graphic Print -->
@@ -51,7 +51,7 @@
     </g>
   </g>
 
-  <!-- Editorial Info Footer -->
+  <!-- Editorial Info Overlay -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">SYOK LAH Oversized Tee</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "Sekali pakai terus jadi."</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#E8DFCF" stroke-width="1"/>

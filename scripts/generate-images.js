@@ -10,9 +10,10 @@ const PRODUCTS_DATA = [
     frontSub: 'Talk Big. Move Slow.',
     backCopy: 'Banyak cakap. Sedikit gerak.',
     type: 'tee',
-    accentColor: '#8D2025', // Dark Red
+    accentColor: '#B7945A', // Batik Gold
     subAccent: '#F2EFE8',
     badge: 'BEST SELLER',
+    tagline: 'Kuala Lumpur Street Satire',
   },
   {
     slug: 'acah-padu-sleeveless',
@@ -25,6 +26,7 @@ const PRODUCTS_DATA = [
     accentColor: '#D65A20', // Deep Orange
     subAccent: '#F2EFE8',
     badge: 'HOT',
+    tagline: 'Raw Cut Armhole Cutout',
   },
   {
     slug: 'terpaling-on-tee',
@@ -35,8 +37,9 @@ const PRODUCTS_DATA = [
     backCopy: 'Online sentiasa. Action entah bila.',
     type: 'tee',
     accentColor: '#C8FF00', // Acid Lime
-    subAccent: '#556B2F', // Olive Green
+    subAccent: '#8C8C8C',
     badge: 'NEW DROP',
+    tagline: 'Cyber Streetwear Series',
   },
   {
     slug: 'boleh-lah-sleeveless',
@@ -46,9 +49,10 @@ const PRODUCTS_DATA = [
     frontSub: 'Not Great. Still Jalan.',
     backCopy: 'Tak perfect. Tapi lepas.',
     type: 'sleeveless',
-    accentColor: '#8C8C8C', // Muted Grey
+    accentColor: '#8D2025', // Heritage Red
     subAccent: '#F2EFE8',
     badge: 'LIMITED RUN',
+    tagline: 'Lowkey Street Attitude',
   },
   {
     slug: 'padu-gila-tee',
@@ -61,6 +65,7 @@ const PRODUCTS_DATA = [
     accentColor: '#C8FF00', // Acid Lime
     subAccent: '#F2EFE8',
     badge: 'BEST SELLER',
+    tagline: '3D High-Density Puff Print',
   },
   {
     slug: 'jom-lepak-tee',
@@ -73,6 +78,7 @@ const PRODUCTS_DATA = [
     accentColor: '#F2EFE8', // Off-White
     subAccent: '#B7945A', // Batik Gold
     badge: 'NEW DROP',
+    tagline: 'Mamak Midnight Uniform',
   },
   {
     slug: 'ngam-lah-tee',
@@ -85,6 +91,7 @@ const PRODUCTS_DATA = [
     accentColor: '#0E5B5F', // Dark Teal
     subAccent: '#F2EFE8',
     badge: 'LIMITED RUN',
+    tagline: 'Batik Border Reworked',
   },
   {
     slug: 'syok-lah-tee',
@@ -97,6 +104,7 @@ const PRODUCTS_DATA = [
     accentColor: '#E8DFCF', // Cream
     subAccent: '#C8FF00',
     badge: 'NEW DROP',
+    tagline: 'Soft-Touch Discharge Print',
   },
   {
     slug: 'sentap-sikit-tee',
@@ -106,9 +114,10 @@ const PRODUCTS_DATA = [
     frontSub: 'Truth Hurts A Bit.',
     backCopy: 'Kalau terasa, mungkin betul.',
     type: 'tee',
-    accentColor: '#B7945A', // Dark Gold
-    subAccent: '#8D2025',
+    accentColor: '#8D2025', // Heritage Red
+    subAccent: '#B7945A',
     badge: 'HOT',
+    tagline: 'Truth Statement Edition',
   },
   {
     slug: 'steady-konon-sleeveless',
@@ -121,6 +130,7 @@ const PRODUCTS_DATA = [
     accentColor: '#C8FF00', // Acid Lime
     subAccent: '#D65A20',
     badge: 'LIMITED RUN',
+    tagline: 'Raw Cut Caution Label',
   },
   {
     slug: 'banyak-alasan-tee',
@@ -133,6 +143,7 @@ const PRODUCTS_DATA = [
     accentColor: '#D65A20', // Burnt Orange
     subAccent: '#F2EFE8',
     badge: 'NEW DROP',
+    tagline: 'Procrastination Special',
   },
   {
     slug: 'chill-dulu-tee',
@@ -145,17 +156,17 @@ const PRODUCTS_DATA = [
     accentColor: '#F2EFE8', // Off White
     subAccent: '#0E5B5F',
     badge: 'BEST SELLER',
+    tagline: 'Anti-Burnout Series',
   },
 ];
 
 function generateFrontSVG(prod) {
   const isSleeveless = prod.type === 'sleeveless';
   const accent = prod.accentColor;
-  const subAccent = prod.subAccent;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050505" />
       <stop offset="50%" stop-color="#0a0a0a" />
       <stop offset="100%" stop-color="#141414" />
@@ -168,15 +179,20 @@ function generateFrontSVG(prod) {
       <rect width="6" height="6" fill="#111111"/>
       <path d="M 0 3 L 6 3 M 3 0 L 3 6" stroke="#181818" stroke-width="0.8"/>
     </pattern>
+    <filter id="inkDistress">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <!-- Studio Background -->
+  <rect width="100%" height="100%" fill="url(#studioBg)" />
   <rect width="100%" height="100%" fill="url(#spotlight)" />
 
-  <!-- Garment Floor Shadow -->
+  <!-- Floor Shadow -->
   <ellipse cx="400" cy="810" rx="240" ry="25" fill="#000000" opacity="0.8" />
 
-  <!-- Black Garment Silhouette -->
+  <!-- Garment Silhouette -->
   <g transform="translate(0, 40)">
     ${
       isSleeveless
@@ -190,18 +206,18 @@ function generateFrontSVG(prod) {
            <line x1="520" y1="170" x2="520" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>`
     }
 
-    <!-- Collar Rib -->
+    <!-- Collar Ribbing -->
     <path d="M 330 130 Q 400 195 470 130" fill="none" stroke="#1c1c1c" stroke-width="14" />
     <path d="M 330 130 Q 400 195 470 130" fill="none" stroke="#2d2d2d" stroke-width="2" stroke-dasharray="4 2"/>
 
-    <!-- Inside Brand Tag -->
+    <!-- Inside Woven Label -->
     <rect x="365" y="145" width="70" height="26" fill="#080808" stroke="#333" stroke-width="1" rx="1"/>
     <text x="400" y="157" font-family="Bebas Neue, sans-serif" font-size="11" font-weight="bold" fill="#F2EFE8" text-anchor="middle">LOKAL//LOUD</text>
     <text x="400" y="166" font-family="sans-serif" font-size="6" font-weight="bold" fill="${accent}" text-anchor="middle">MADE IN MY • 260GSM</text>
 
-    <!-- Front Chest Graphic Print -->
+    <!-- FRONT PRINT GRAPHIC -->
     <g transform="translate(400, 360)">
-      <text x="0" y="-10" font-family="Bebas Neue, sans-serif" font-size="54" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="3">
+      <text x="0" y="-10" font-family="Bebas Neue, sans-serif" font-size="54" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="3" filter="url(#inkDistress)">
         ${prod.frontMain}
       </text>
 
@@ -223,7 +239,7 @@ function generateFrontSVG(prod) {
     <text x="308" y="743" font-family="sans-serif" font-size="7" font-weight="extrabold" fill="${accent}" text-anchor="middle">🇲🇾 KL</text>
   </g>
 
-  <!-- Editorial Info Footer -->
+  <!-- Editorial Info Overlay -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">FRONT VIEW // 260 GSM OVERSIZED BLACK SILHOUETTE</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
@@ -237,7 +253,7 @@ function generateBackSVG(prod) {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#050505" />
       <stop offset="50%" stop-color="#0a0a0a" />
       <stop offset="100%" stop-color="#141414" />
@@ -248,7 +264,7 @@ function generateBackSVG(prod) {
     </pattern>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+  <rect width="100%" height="100%" fill="url(#studioBg)" />
 
   <g transform="translate(0, 40)">
     ${
@@ -259,7 +275,7 @@ function generateBackSVG(prod) {
            <line x1="520" y1="170" x2="520" y2="330" stroke="#262626" stroke-width="2" stroke-dasharray="3 2"/>`
     }
 
-    <!-- Collar Rib Back -->
+    <!-- Collar Back -->
     <path d="M 330 130 L 470 130" stroke="#1c1c1c" stroke-width="14"/>
 
     <!-- Large Back Slang Graphic Print -->
@@ -292,7 +308,7 @@ function generateBackSVG(prod) {
     </g>
   </g>
 
-  <!-- Editorial Info Footer -->
+  <!-- Editorial Info Overlay -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "${prod.backCopy}"</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
@@ -347,7 +363,7 @@ function generateDetailSVG(prod) {
     <text x="490" y="566" font-family="sans-serif" font-size="8" fill="#8C8C8C" text-anchor="middle">SUBTLE CORNER ACCENT</text>
   </g>
 
-  <!-- Editorial Info Footer -->
+  <!-- Editorial Info Overlay -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">PRINT & FABRIC MACRO DETAIL // HEAVY COTTON WEAVE</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
@@ -393,7 +409,6 @@ function generateModelSVG(prod) {
   <text x="55" y="62" font-family="sans-serif" font-size="11" font-weight="bold" fill="${accent}">STREET LOOKBOOK // KL</text>
   <text x="55" y="80" font-family="sans-serif" font-size="10" fill="#8C8C8C">MODEL IS 182CM WEARING SIZE L</text>
 
-  <!-- Editorial Info Footer -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">${prod.name}</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">ON MODEL EDITORIAL LOOK // KUALA LUMPUR STREETS</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="${accent}" stroke-width="1"/>
@@ -413,7 +428,6 @@ PRODUCTS_DATA.forEach((prod) => {
   const detailSvg = generateDetailSVG(prod);
   const modelSvg = generateModelSVG(prod);
 
-  // Write both .png and .jpg filenames so both references work seamlessly!
   fs.writeFileSync(path.join(prodDir, 'front.png'), frontSvg, 'utf8');
   fs.writeFileSync(path.join(prodDir, 'back.png'), backSvg, 'utf8');
   fs.writeFileSync(path.join(prodDir, 'detail.png'), detailSvg, 'utf8');
@@ -427,4 +441,4 @@ PRODUCTS_DATA.forEach((prod) => {
   console.log(`Generated PNG/JPG asset suite for [${prod.slug}]`);
 });
 
-console.log('All 12 products (96 image asset files: 48 PNG + 48 JPG) generated in 4:5 ratio!');
+console.log('All 12 products (96 image asset files) fine-tuned and generated!');

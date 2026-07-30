@@ -42,7 +42,7 @@
     <text x="490" y="566" font-family="sans-serif" font-size="8" fill="#8C8C8C" text-anchor="middle">SUBTLE CORNER ACCENT</text>
   </g>
 
-  <!-- Editorial Info Footer -->
+  <!-- Editorial Info Overlay -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">NGAM LAH Oversized Tee</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">PRINT & FABRIC MACRO DETAIL // HEAVY COTTON WEAVE</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#0E5B5F" stroke-width="1"/>

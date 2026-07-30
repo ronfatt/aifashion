@@ -14,14 +14,14 @@
 
   <g transform="translate(400, 480)">
     <circle cx="0" cy="-300" r="45" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
-    <path d="M -55 -315 L 55 -315 L 65 -300 L -65 -300 Z" fill="#080808" stroke="#B7945A" stroke-width="2"/>
+    <path d="M -55 -315 L 55 -315 L 65 -300 L -65 -300 Z" fill="#080808" stroke="#8D2025" stroke-width="2"/>
 
     <path d="M -160 -240 L -80 -255 L 80 -255 L 160 -240 L 210 -50 L 150 -30 L 130 -120 L 130 180 L -130 180 L -130 -120 L -150 -30 L -210 -50 Z" fill="#111111" stroke="#333" stroke-width="3"/>
 
     <text x="0" y="-120" font-family="Bebas Neue, sans-serif" font-size="38" fill="#F2EFE8" text-anchor="middle" font-weight="900">
       SENTAP SIKIT
     </text>
-    <text x="0" y="-95" font-family="sans-serif" font-size="10" fill="#B7945A" text-anchor="middle" font-weight="bold">
+    <text x="0" y="-95" font-family="sans-serif" font-size="10" fill="#8D2025" text-anchor="middle" font-weight="bold">
       TRUTH HURTS A BIT.
     </text>
 
@@ -30,12 +30,11 @@
   </g>
 
   <rect x="40" y="40" width="240" height="60" fill="#111111" stroke="#292929" stroke-width="1" rx="2"/>
-  <text x="55" y="62" font-family="sans-serif" font-size="11" font-weight="bold" fill="#B7945A">STREET LOOKBOOK // KL</text>
+  <text x="55" y="62" font-family="sans-serif" font-size="11" font-weight="bold" fill="#8D2025">STREET LOOKBOOK // KL</text>
   <text x="55" y="80" font-family="sans-serif" font-size="10" fill="#8C8C8C">MODEL IS 182CM WEARING SIZE L</text>
 
-  <!-- Editorial Info Footer -->
   <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">SENTAP SIKIT Oversized Tee</text>
   <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">ON MODEL EDITORIAL LOOK // KUALA LUMPUR STREETS</text>
-  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#B7945A" stroke-width="1"/>
-  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#B7945A" text-anchor="middle">MODEL</text>
+  <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#8D2025" stroke-width="1"/>
+  <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#8D2025" text-anchor="middle">MODEL</text>
 </svg>
