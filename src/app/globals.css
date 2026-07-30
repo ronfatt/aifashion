@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital@1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #080808;
+  color: #F2EFE8;
+  font-family: var(--font-inter);
+}
+
+body {
+  background-color: #080808;
+  color: #F2EFE8;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292929;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C8FF00;
+}
+
+/* Selection */
+::selection {
+  background: #C8FF00;
+  color: #080808;
+}
+
+/* Typography styles */
+.font-display {
+  font-family: var(--font-bebas);
+  letter-spacing: 0.05em;
+}
+
+.text-stroke-lime {
+  -webkit-text-stroke: 1px #C8FF00;
+  color: transparent;
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px #F2EFE8;
+  color: transparent;
+}
+
+/* Smooth Hide Scrollbar for Horizontal Scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
