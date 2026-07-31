@@ -3,7 +3,7 @@ export interface LookbookItem {
   title: string;
   location: string;
   image: string;
-  aspectRatio: "aspect-[3/4]" | "aspect-[4/5]" | "aspect-[16/9]";
+  aspectRatio: "aspect-[3/4]" | "aspect-[4/5]";
   caption: string;
 }
 
@@ -21,7 +21,7 @@ export const LOOKBOOK_ITEMS: LookbookItem[] = [
     title: "BATIK REWORKED DETAIL",
     location: "Studio 03, Subang Jaya",
     image: "/images/lookbook/lookbook-02.jpg",
-    aspectRatio: "aspect-[4/5]",
+    aspectRatio: "aspect-[3/4]",
     caption: "High-density puff screenprint over traditional Terengganu batik motif pattern.",
   },
   {
@@ -29,7 +29,7 @@ export const LOOKBOOK_ITEMS: LookbookItem[] = [
     title: "URBAN ALLEYWAY ATTITUDE",
     location: "RexKL Alleyways",
     image: "/images/lookbook/lookbook-03.jpg",
-    aspectRatio: "aspect-[16/9]",
+    aspectRatio: "aspect-[3/4]",
     caption: "ACAH PADU sleeveless shirt worn by local skater crew in nocturnal KL lights.",
   },
   {
@@ -45,7 +45,7 @@ export const LOOKBOOK_ITEMS: LookbookItem[] = [
     title: "STREET SATIRE UNIFORM",
     location: "Bukit Bintang Crosswalk",
     image: "/images/lookbook/lookbook-05.jpg",
-    aspectRatio: "aspect-[4/5]",
+    aspectRatio: "aspect-[3/4]",
     caption: "PADU GILA graphic oversized tee in natural Acid Lime custom dye.",
   },
 ];
