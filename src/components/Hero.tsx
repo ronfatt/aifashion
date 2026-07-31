@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const HERO_SLIDES = [
@@ -14,6 +14,9 @@ const HERO_SLIDES = [
     subtitle: "Pakai attitude. Bukan sekadar baju.",
     chinese: "穿的不只是衣服，是我们的态度。",
     badge: "VOL. 01 STREET SATIRE",
+    featuredSlug: "sembang-kencang-tee",
+    featuredName: "SEMBANG KENCANG TEE",
+    featuredPrice: "RM129",
   },
   {
     id: 2,
@@ -23,6 +26,9 @@ const HERO_SLIDES = [
     subtitle: "Warisan lama. Attitude baru.",
     chinese: "继承传统，炸裂街头。",
     badge: "BATIK AFTER DARK",
+    featuredSlug: "acah-padu-sleeveless",
+    featuredName: "ACAH PADU SLEEVELESS",
+    featuredPrice: "RM109",
   },
   {
     id: 3,
@@ -32,6 +38,9 @@ const HERO_SLIDES = [
     subtitle: "No agenda. Just Malaysian vibes.",
     chinese: "不按常理出牌，街头就是主场。",
     badge: "LEPAK CLUB UNIFORM",
+    featuredSlug: "jom-lepak-tee",
+    featuredName: "JOM LEPAK OVERSIZED TEE",
+    featuredPrice: "RM129",
   },
 ];
 
@@ -86,21 +95,22 @@ export const Hero: React.FC = () => {
         >
           {/* Background Image */}
           <div
-            className="w-full h-full bg-cover bg-right md:bg-center"
+            className="w-full h-full bg-cover bg-center md:bg-right"
             style={{ backgroundImage: `url(${slide.image})` }}
             role="img"
             aria-label={`Hero banner ${slide.titleLine1} ${slide.titleLine2}`}
           />
 
-          {/* Dark Overlay Gradients */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/85 to-transparent w-full md:w-[65%]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-[#080808]/50" />
+          {/* Dark Overlay Gradients - Carefully tuned to keep right model area bright and clear */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080808] via-[#080808]/80 to-transparent w-full md:w-[55%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-[#080808]/40" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Hero Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-0">
-        <div className="max-w-2xl">
+      {/* Hero Main Content Grid */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-0 grid grid-cols-1 lg:grid-cols-12 items-center gap-8">
+        {/* Left Typography Column */}
+        <div className="lg:col-span-8 max-w-2xl">
           {/* Series Badge */}
           <motion.div
             key={`badge-${currentSlide}`}
@@ -179,6 +189,42 @@ export const Hero: React.FC = () => {
               className="min-h-[48px] px-8 py-4 bg-[#111111]/90 backdrop-blur-md border border-[#292929] text-[#F2EFE8] font-bold font-mono tracking-widest text-sm uppercase rounded-sm hover:border-[#C8FF00] hover:text-[#C8FF00] transition-colors flex items-center justify-center"
             >
               VIEW LOOKBOOK
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Right Floating Spotlight Card (Desktop Only) */}
+        <div className="hidden lg:block lg:col-span-4 justify-self-end">
+          <motion.div
+            key={`spotlight-${currentSlide}`}
+            initial={{ opacity: 0, x: 20, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-[#111111]/80 backdrop-blur-xl border border-[#292929] p-5 rounded-sm max-w-xs shadow-2xl hover:border-[#C8FF00]/50 transition-all group"
+          >
+            <div className="flex items-center justify-between mb-3">
+              <span className="inline-flex items-center space-x-1 text-[10px] font-mono text-[#C8FF00] font-bold tracking-widest uppercase">
+                <Sparkles className="w-3 h-3 text-[#C8FF00]" />
+                <span>FEATURED UNIFORM</span>
+              </span>
+              <span className="text-xs font-mono font-bold text-[#F2EFE8]">
+                {slide.featuredPrice}
+              </span>
+            </div>
+
+            <h4 className="font-display text-lg text-[#F2EFE8] uppercase group-hover:text-[#C8FF00] transition-colors">
+              {slide.featuredName}
+            </h4>
+            <p className="font-mono text-[10px] text-[#8C8C8C] mt-1 mb-4">
+              260 GSM Heavyweight Cotton • Limited KL Batch
+            </p>
+
+            <Link
+              href={`/products/${slide.featuredSlug}`}
+              className="inline-flex items-center justify-between w-full px-3 py-2 bg-[#171717] border border-[#292929] hover:border-[#C8FF00] text-xs font-mono font-bold text-[#F2EFE8] hover:text-[#C8FF00] transition-colors rounded-sm"
+            >
+              <span>EXPLORE PIECE</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </motion.div>
         </div>
