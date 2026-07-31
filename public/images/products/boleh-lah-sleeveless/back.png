@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
   <defs>
-    <linearGradient id="studioBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050505" />
-      <stop offset="50%" stop-color="#0a0a0a" />
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070707" />
+      <stop offset="50%" stop-color="#0d0d0d" />
       <stop offset="100%" stop-color="#141414" />
     </linearGradient>
     <pattern id="cottonTexture" width="6" height="6" patternUnits="userSpaceOnUse">
@@ -11,7 +11,9 @@
     </pattern>
   </defs>
 
-  <rect width="100%" height="100%" fill="url(#studioBg)" />
+  <rect width="100%" height="100%" fill="url(#bgGrad)" />
+
+  <ellipse cx="400" cy="815" rx="250" ry="25" fill="#000000" opacity="0.85" />
 
   <g transform="translate(0, 40)">
     <path d="M 280 150 L 340 130 L 460 130 L 520 150 L 515 310 L 490 350 L 500 760 L 300 760 L 310 350 L 285 310 Z" fill="url(#cottonTexture)" stroke="#222222" stroke-width="3"/>
@@ -19,39 +21,62 @@
     <!-- Collar Back -->
     <path d="M 330 130 L 470 130" stroke="#1c1c1c" stroke-width="14"/>
 
-    <!-- Large Back Slang Graphic Print -->
-    <g transform="translate(400, 350)">
-      <text x="0" y="-70" font-family="Bebas Neue, sans-serif" font-size="68" font-weight="900" fill="#8D2025" text-anchor="middle" letter-spacing="4">
+    <!-- SIDE BATIK FLORAL PATTERN (Back Right Side Trail) -->
+    <g opacity="0.8">
+      <path d="M 500 760 Q 470 600 510 420 Q 520 300 480 200" fill="none" stroke="#8D2025" stroke-width="3" />
+      <g transform="translate(480, 680) scale(1.4)">
+        <circle cx="0" cy="0" r="8" fill="none" stroke="#8D2025" stroke-width="2"/>
+        <path d="M 0 -22 Q -8 -10 0 0 Q 8 -10 0 -22 Z" fill="#8D2025"/>
+        <path d="M 0 22 Q -8 10 0 0 Q 8 10 0 22 Z" fill="#8D2025"/>
+        <path d="M -22 0 Q -10 -8 0 0 Q -10 8 -22 0 Z" fill="#8D2025"/>
+        <path d="M 22 0 Q 10 -8 0 0 Q 10 8 22 0 Z" fill="#8D2025"/>
+      </g>
+    </g>
+
+    <!-- BACK GIANT SLANG STATEMENT PRINT -->
+    <g transform="translate(400, 340)">
+      <!-- Batik Symbol Center Crest -->
+      <g transform="translate(0, -90) scale(0.9)">
+        <circle cx="0" cy="0" r="10" fill="#8D2025"/>
+        <path d="M 0 -25 Q -10 -12 0 0 Q 10 -12 0 -25 Z" fill="#8D2025"/>
+        <path d="M 0 25 Q -10 12 0 0 Q 10 12 0 25 Z" fill="#8D2025"/>
+        <path d="M -25 0 Q -12 -10 0 0 Q -12 10 -25 0 Z" fill="#8D2025"/>
+        <path d="M 25 0 Q 12 -10 0 0 Q 12 10 25 0 Z" fill="#8D2025"/>
+      </g>
+
+      <!-- Headline -->
+      <text x="0" y="-40" font-family="Bebas Neue, sans-serif" font-size="64" font-weight="900" fill="#8D2025" text-anchor="middle" letter-spacing="4">
         BOLEH LAH
       </text>
 
-      <rect x="-190" y="-15" width="380" height="65" fill="#080808" stroke="#333333" stroke-width="1.5" rx="3"/>
-      <text x="0" y="22" font-family="sans-serif" font-size="20" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
+      <!-- Sarcastic Quote Box -->
+      <rect x="-190" y="0" width="380" height="65" fill="#080808" stroke="#333333" stroke-width="1.5" rx="3"/>
+      <text x="0" y="38" font-family="sans-serif" font-size="20" font-weight="900" fill="#F2EFE8" text-anchor="middle" letter-spacing="1">
         "Tak perfect. Tapi lepas."
       </text>
 
-      <text x="0" y="80" font-family="sans-serif" font-size="10" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
-        MALAYSIAN STREET SATIRE • ORIGINAL ARTWORK
+      <text x="0" y="95" font-family="sans-serif" font-size="10" font-weight="700" fill="#8C8C8C" text-anchor="middle" letter-spacing="3">
+        PRINTED IN MALAYSIA • ATTITUDE GLOBAL
       </text>
 
       <!-- Barcode Tag -->
-      <rect x="-60" y="105" width="120" height="28" fill="#080808" stroke="#292929" stroke-width="1"/>
-      <line x1="-50" y1="110" x2="-50" y2="128" stroke="#FFF" stroke-width="2"/>
-      <line x1="-44" y1="110" x2="-44" y2="128" stroke="#FFF" stroke-width="4"/>
-      <line x1="-34" y1="110" x2="-34" y2="128" stroke="#FFF" stroke-width="1"/>
-      <line x1="-25" y1="110" x2="-25" y2="128" stroke="#FFF" stroke-width="3"/>
-      <line x1="-15" y1="110" x2="-15" y2="128" stroke="#FFF" stroke-width="5"/>
-      <line x1="-2" y1="110" x2="-2" y2="128" stroke="#FFF" stroke-width="2"/>
-      <line x1="8" y1="110" x2="8" y2="128" stroke="#FFF" stroke-width="4"/>
-      <line x1="20" y1="110" x2="20" y2="128" stroke="#FFF" stroke-width="2"/>
-      <line x1="30" y1="110" x2="30" y2="128" stroke="#FFF" stroke-width="3"/>
-      <line x1="45" y1="110" x2="45" y2="128" stroke="#FFF" stroke-width="2"/>
+      <rect x="-60" y="118" width="120" height="28" fill="#080808" stroke="#292929" stroke-width="1"/>
+      <line x1="-50" y1="123" x2="-50" y2="141" stroke="#FFF" stroke-width="2"/>
+      <line x1="-44" y1="123" x2="-44" y2="141" stroke="#FFF" stroke-width="4"/>
+      <line x1="-34" y1="123" x2="-34" y2="141" stroke="#FFF" stroke-width="1"/>
+      <line x1="-25" y1="123" x2="-25" y2="141" stroke="#FFF" stroke-width="3"/>
+      <line x1="-15" y1="123" x2="-15" y2="141" stroke="#FFF" stroke-width="5"/>
+      <line x1="-2" y1="123" x2="-2" y2="141" stroke="#FFF" stroke-width="2"/>
+      <line x1="8" y1="123" x2="8" y2="141" stroke="#FFF" stroke-width="4"/>
+      <line x1="20" y1="123" x2="20" y2="141" stroke="#FFF" stroke-width="2"/>
+      <line x1="30" y1="123" x2="30" y2="141" stroke="#FFF" stroke-width="3"/>
+      <line x1="45" y1="123" x2="45" y2="141" stroke="#FFF" stroke-width="2"/>
     </g>
   </g>
 
-  <!-- Editorial Info Overlay -->
-  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="30" fill="#F2EFE8" letter-spacing="2">BOLEH LAH Sleeveless Tee</text>
-  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="500">BACK PRINT VIEW // "Tak perfect. Tapi lepas."</text>
+  <!-- Editorial Spec Overlay at Bottom -->
+  <text x="40" y="930" font-family="Bebas Neue, sans-serif" font-size="32" fill="#F2EFE8" letter-spacing="2">BOLEH LAH Sleeveless Tee</text>
+  <text x="40" y="955" font-family="sans-serif" font-size="12" fill="#8C8C8C" font-weight="600">BACK VIEW // "Tak perfect. Tapi lepas."</text>
   <rect x="700" y="920" width="60" height="24" fill="#111111" stroke="#8D2025" stroke-width="1"/>
   <text x="730" y="936" font-family="sans-serif" font-size="10" font-weight="bold" fill="#8D2025" text-anchor="middle">BACK</text>
 </svg>
