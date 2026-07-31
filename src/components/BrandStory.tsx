@@ -58,7 +58,7 @@ export const BrandStory: React.FC = () => {
                 <div className="h-32 bg-[#171717] rounded-sm flex items-center justify-center border border-[#292929] overflow-hidden">
                   <div
                     className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(/images/products/sembang-kencang-detail.jpg)` }}
+                    style={{ backgroundImage: `url(/images/products/sembang-kencang-tee/detail.png)` }}
                   />
                 </div>
                 <span className="text-[11px] font-mono text-[#C8FF00] block uppercase font-bold">
@@ -70,7 +70,7 @@ export const BrandStory: React.FC = () => {
                 <div className="h-32 bg-[#171717] rounded-sm flex items-center justify-center border border-[#292929] overflow-hidden">
                   <div
                     className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(/images/products/terpaling-on-detail.jpg)` }}
+                    style={{ backgroundImage: `url(/images/products/terpaling-on-tee/detail.png)` }}
                   />
                 </div>
                 <span className="text-[11px] font-mono text-[#C8FF00] block uppercase font-bold">
@@ -84,7 +84,7 @@ export const BrandStory: React.FC = () => {
                 <div className="h-32 bg-[#171717] rounded-sm flex items-center justify-center border border-[#292929] overflow-hidden">
                   <div
                     className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(/images/products/acah-padu-detail.jpg)` }}
+                    style={{ backgroundImage: `url(/images/products/acah-padu-sleeveless/detail.png)` }}
                   />
                 </div>
                 <span className="text-[11px] font-mono text-[#C8FF00] block uppercase font-bold">
@@ -96,7 +96,7 @@ export const BrandStory: React.FC = () => {
                 <div className="h-32 bg-[#171717] rounded-sm flex items-center justify-center border border-[#292929] overflow-hidden">
                   <div
                     className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                    style={{ backgroundImage: `url(/images/products/cap-detail.jpg)` }}
+                    style={{ backgroundImage: `url(/images/products/padu-gila-tee/detail.png)` }}
                   />
                 </div>
                 <span className="text-[11px] font-mono text-[#C8FF00] block uppercase font-bold">
